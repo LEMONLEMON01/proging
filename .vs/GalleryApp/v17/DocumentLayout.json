@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\painting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\painting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\authorization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\authorization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\authorization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\authorization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Painting.cs",
+              "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Painting.cs",
+              "RelativeDocumentMoniker": "GalleryApp\\Classes\\Painting.cs",
+              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Painting.cs",
+              "RelativeToolTip": "GalleryApp\\Classes\\Painting.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T11:56:31.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Employee.cs",
+              "RelativeDocumentMoniker": "GalleryApp\\Classes\\Employee.cs",
+              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Employee.cs",
+              "RelativeToolTip": "GalleryApp\\Classes\\Employee.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAAABsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T11:55:09.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Person.cs",
+              "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Person.cs",
+              "RelativeDocumentMoniker": "GalleryApp\\Classes\\Person.cs",
+              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Person.cs",
+              "RelativeToolTip": "GalleryApp\\Classes\\Person.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T11:48:05.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Authorization.cs",
+              "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Authorization.cs",
+              "RelativeDocumentMoniker": "GalleryApp\\Authorization.cs",
+              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Authorization.cs",
+              "RelativeToolTip": "GalleryApp\\Authorization.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAowCsAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T11:34:55.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Authorization.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Authorization.cs",
+              "RelativeDocumentMoniker": "GalleryApp\\Authorization.cs",
+              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Authorization.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "GalleryApp\\Authorization.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T11:34:47.051Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Menu.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Menu.cs",
+              "RelativeDocumentMoniker": "GalleryApp\\Menu.cs",
+              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Menu.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "GalleryApp\\Menu.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T11:34:46.131Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

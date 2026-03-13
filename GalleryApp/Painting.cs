@@ -9,32 +9,34 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GalleryApp.Classes;
 
+
 namespace GalleryApp
 {
-    public partial class Menu : Form
+    public partial class Painting : Form
     {
-        public Menu()
+        public Painting()
         {
             InitializeComponent();
+            using (Context c = new Context())
+            {
+                List<Painting> paintings = c.Paintings.Include("Group").ToList();
+                dataGridView1.DataSource = paintings;
+            }
+
         }
 
-        private void Menu_Load(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Painting Painting = new Painting();
-            Painting.Show();
+            Painting p = new Painting();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Exhibition Exhibition = new Exhibition();
-            Exhibition.Show();
 
         }
     }

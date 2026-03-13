@@ -12,18 +12,15 @@ using GalleryApp.Classes;
 
 namespace GalleryApp
 {
-    public partial class PaintingWindow : Form
+    public partial class Main : Form
     {
-        public PaintingWindow()
+        public Main()
         {
             InitializeComponent();
-            using (Context c = new Context())
-            {
-                List<Painting> paintings = c.Paintings.Include("Genres").ToList();
-                dataGridView1.DataSource = paintings;
-            }
 
         }
+
+        ListWindow listWindow;
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -32,12 +29,30 @@ namespace GalleryApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PaintingWindow p = new PaintingWindow();
+            Main p = new Main();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void отчетыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void картиныToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listWindow == null || listWindow.IsDisposed)
+            {
+                listWindow = new ListWindow();
+                listWindow.MdiParent = this;
+            }
+
+            listWindow.Show();
+            listWindow.BringToFront();
+            listWindow.Focus();
         }
     }
 }

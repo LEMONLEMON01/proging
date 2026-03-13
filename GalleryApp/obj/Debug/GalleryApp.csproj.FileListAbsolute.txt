@@ -33,4 +33,4 @@ C:\proging\proging\GalleryApp\obj\Debug\GalleryApp.csproj.Up2Date
 C:\proging\proging\GalleryApp\obj\Debug\GalleryApp.exe
 C:\proging\proging\GalleryApp\obj\Debug\GalleryApp.pdb
 C:\Users\Персик\source\repos\GalleryApp\GalleryApp\obj\Debug\GalleryApp.Menu.resources
-C:\Users\Персик\source\repos\GalleryApp\GalleryApp\obj\Debug\GalleryApp.PaintingWindow.resources
+C:\Users\Персик\source\repos\GalleryApp\GalleryApp\obj\Debug\GalleryApp.Main.resources

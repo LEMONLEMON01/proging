@@ -26,7 +26,7 @@ namespace GalleryApp
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PaintingWindow Painting = new PaintingWindow();
+            Main Painting = new Main();
             Painting.Show();
         }
 

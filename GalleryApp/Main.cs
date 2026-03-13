@@ -22,6 +22,18 @@ namespace GalleryApp
 
         ListWindow listWindow;
 
+        private void listWindow_load()
+        {
+            if (listWindow == null || listWindow.IsDisposed)
+            {
+                listWindow = new ListWindow();
+                listWindow.MdiParent = this;
+            }
+
+            listWindow.Show();
+            listWindow.BringToFront();
+            listWindow.Focus();
+        }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -53,6 +65,11 @@ namespace GalleryApp
             listWindow.Show();
             listWindow.BringToFront();
             listWindow.Focus();
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

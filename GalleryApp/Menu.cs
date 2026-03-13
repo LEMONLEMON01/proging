@@ -26,14 +26,14 @@ namespace GalleryApp
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Painting Painting = new Painting();
+            PaintingWindow Painting = new PaintingWindow();
             Painting.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Exhibition Exhibition = new Exhibition();
+            ExhibitionWindow Exhibition = new ExhibitionWindow();
             Exhibition.Show();
 
         }

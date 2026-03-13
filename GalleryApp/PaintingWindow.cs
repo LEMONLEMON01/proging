@@ -12,14 +12,14 @@ using GalleryApp.Classes;
 
 namespace GalleryApp
 {
-    public partial class Painting : Form
+    public partial class PaintingWindow : Form
     {
-        public Painting()
+        public PaintingWindow()
         {
             InitializeComponent();
             using (Context c = new Context())
             {
-                List<Painting> paintings = c.Paintings.Include("Group").ToList();
+                List<Painting> paintings = c.Paintings.Include("Genres").ToList();
                 dataGridView1.DataSource = paintings;
             }
 
@@ -32,7 +32,7 @@ namespace GalleryApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Painting p = new Painting();
+            PaintingWindow p = new PaintingWindow();
         }
 
         private void button2_Click(object sender, EventArgs e)

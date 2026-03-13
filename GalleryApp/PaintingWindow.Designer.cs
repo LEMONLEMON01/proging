@@ -1,6 +1,6 @@
 ﻿namespace GalleryApp
 {
-    partial class Painting
+    partial class PaintingWindow
     {
         /// <summary>
         /// Required designer variable.

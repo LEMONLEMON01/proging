@@ -1,6 +1,6 @@
 ﻿namespace GalleryApp
 {
-    partial class Exhibition
+    partial class ExhibitionWindow
     {
         /// <summary>
         /// Required designer variable.

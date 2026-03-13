@@ -71,11 +71,11 @@
     <Compile Include="Classes\Move_history.cs" />
     <Compile Include="Classes\Painting.cs" />
     <Compile Include="Classes\Person.cs" />
-    <Compile Include="Exhibition.cs">
+    <Compile Include="ExhibitionWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exhibition.Designer.cs">
-      <DependentUpon>Exhibition.cs</DependentUpon>
+    <Compile Include="ExhibitionWindow.Designer.cs">
+      <DependentUpon>ExhibitionWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -92,11 +92,11 @@
       <DependentUpon>202603041140463_addDbSets.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Painting.cs">
+    <Compile Include="PaintingWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Painting.Designer.cs">
-      <DependentUpon>Painting.cs</DependentUpon>
+    <Compile Include="PaintingWindow.Designer.cs">
+      <DependentUpon>PaintingWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,8 +112,8 @@
     <EmbeddedResource Include="Migrations\202603041140463_addDbSets.resx">
       <DependentUpon>202603041140463_addDbSets.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Painting.resx">
-      <DependentUpon>Painting.cs</DependentUpon>
+    <EmbeddedResource Include="PaintingWindow.resx">
+      <DependentUpon>PaintingWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

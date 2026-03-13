@@ -46,8 +46,8 @@ namespace GalleryApp
             if (employee != null)
             {
                 this.Hide();
-                Menu menu = new Menu();
-                menu.Show();
+                PaintingWindow paintingWindow = new PaintingWindow();
+                paintingWindow.ShowDialog();
             }
             else
             {

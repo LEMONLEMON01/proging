@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GalleryApp
 {
-    public partial class Exhibition : Form
+    public partial class ExhibitionWindow : Form
     {
-        public Exhibition()
+        public ExhibitionWindow()
         {
             InitializeComponent();
         }

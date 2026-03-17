@@ -17,23 +17,12 @@ namespace GalleryApp
         public Main()
         {
             InitializeComponent();
-
+            openOrUpdate("Список картин", "Картины");
         }
 
         ListWindow listWindow;
 
-        private void listWindow_load()
-        {
-            if (listWindow == null || listWindow.IsDisposed)
-            {
-                listWindow = new ListWindow();
-                listWindow.MdiParent = this;
-            }
-
-            listWindow.Show();
-            listWindow.BringToFront();
-            listWindow.Focus();
-        }
+        
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -56,20 +45,33 @@ namespace GalleryApp
 
         private void картиныToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (listWindow == null || listWindow.IsDisposed)
-            {
-                listWindow = new ListWindow();
-                listWindow.MdiParent = this;
-            }
-
-            listWindow.Show();
-            listWindow.BringToFront();
-            listWindow.Focus();
+            openOrUpdate("Список картин", "Картины");
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void сотрудникиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openOrUpdate("Список сотрудников", "Сотрудники");
+        }
+
+        private void openOrUpdate(string label, string type)
+        {
+            if (listWindow == null || listWindow.IsDisposed)
+            {
+                listWindow = new ListWindow(label, type);
+                listWindow.MdiParent = this;
+            }
+            else
+            {
+                listWindow.updateContent(label, type);
+            }
+
+            listWindow.Show();
+            listWindow.BringToFront();
         }
     }
 }

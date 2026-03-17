@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalleryApp.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,68 @@ namespace GalleryApp
 {
     public partial class ListWindow : Form
     {
-        public ListWindow()
+        private string s;
+        private string type;
+        private Context db;
+        public ListWindow(string _s, string _dataType)
         {
             InitializeComponent();
+            this.s = _s;
+            this.Text = _s;
+            this.type = _dataType;
+            labelList.Text = s;
+            db = new Context();
+            LoadTable();
         }
 
+        public void updateContent(string _label, string _type) { 
+            this.s += _label;
+            this.type = _type;
+            this.Text = _label;
+            LoadTable();
+        }
+        private void LoadTable()
+        {
+            try
+            {
+                switch (type)
+                {
+                    case "Картины":
+                        LoadPaintings();
+                        break;
+                    case "Сотрудники":
+                        LoadEmployees();
+                        break;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ошибка при загрузке данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void LoadPaintings()
+        {
+            List<Painting> paintings = db.Paintings.ToList();
+            dataGridView1.DataSource = paintings;
+        }
+
+        private void LoadEmployees()
+        {
+            List<Employee> employees = db.Employees.ToList();
+            dataGridView1.DataSource = employees;
+        }
         private void ListWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

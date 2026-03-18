@@ -35,3 +35,6 @@ C:\proging\proging\GalleryApp\obj\Debug\GalleryApp.pdb
 C:\Users\Персик\source\repos\GalleryApp\GalleryApp\obj\Debug\GalleryApp.Menu.resources
 C:\Users\Персик\source\repos\GalleryApp\GalleryApp\obj\Debug\GalleryApp.Main.resources
 C:\Users\Персик\source\repos\GalleryApp\GalleryApp\obj\Debug\GalleryApp.ListWindow.resources
+C:\proging\proging\GalleryApp\obj\Debug\GalleryApp.ListWindow.resources
+C:\proging\proging\GalleryApp\obj\Debug\GalleryApp.Menu.resources
+C:\proging\proging\GalleryApp\obj\Debug\GalleryApp.Main.resources

@@ -45,6 +45,18 @@ namespace GalleryApp
                     case "Сотрудники":
                         LoadEmployees();
                         break;
+                    case "Должности":
+                        LoadPositions();
+                        break;
+                    case "История":
+                        LoadHistory();
+                        break;
+                    case "Выставки":
+                        LoadExhibition();
+                        break;
+                    case "Права Сотрудников":
+                        LoadAccess();
+                        break;
                 }
             }
             catch(Exception ex)
@@ -63,6 +75,28 @@ namespace GalleryApp
         {
             List<Employee> employees = db.Employees.ToList();
             dataGridView1.DataSource = employees;
+        }
+        private void LoadPositions()
+        {
+            List<Position> positions = db.Position.ToList();
+            dataGridView1.DataSource = positions;
+        }
+
+        private void LoadHistory()
+        {
+            List<History> history = db.History.ToList();
+            dataGridView1.DataSource = history;
+        }
+        private void LoadExhibition()
+        {
+            List<Exhibition> exhibitions = db.Exhibition.ToList();
+            dataGridView1.DataSource = exhibitions;
+        }
+
+        private void LoadAccess()
+        {
+            List<Access> access = db.Access.ToList();
+            dataGridView1.DataSource = access;
         }
         private void ListWindow_Load(object sender, EventArgs e)
         {

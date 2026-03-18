@@ -40,7 +40,8 @@ namespace GalleryApp
 
         private void отчетыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //это должности
+            openOrUpdate("Список должностей", "Должности");
         }
 
         private void картиныToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,6 +57,28 @@ namespace GalleryApp
         private void сотрудникиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openOrUpdate("Список сотрудников", "Сотрудники");
+        }
+        private void историяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            openOrUpdate("Список истории", "История");
+        }
+
+        private void выставкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            openOrUpdate("Список выставок", "Выставки");
+        }
+
+        private void праваСотрудникаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            openOrUpdate("Список прав сотрудников", "Права Сотрудников");
+        }
+
+        private void отчетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //отчеты: тут надо будет выбрать из двух 
         }
 
         private void openOrUpdate(string label, string type)
@@ -73,5 +96,11 @@ namespace GalleryApp
             listWindow.Show();
             listWindow.BringToFront();
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

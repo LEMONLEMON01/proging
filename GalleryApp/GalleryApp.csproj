@@ -92,6 +92,12 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalWindow.Designer.cs">
+      <DependentUpon>ModalWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Authorization.resx">

@@ -76,7 +76,7 @@ namespace GalleryApp
         {
             using (Context c = new Context())
             {
-                var employees = c.Employees.Include("Move_history").Select(u => new { u.login, u.password, u.Move_Histories }).ToList();
+                var employees = c.Employees.Include("Move_history").Select(u => new { u.full_name, u.date_of_birth, u.login, u.password, u.Move_Histories }).ToList();
                 dataGridView1.DataSource = employees;
             }
         }
@@ -84,7 +84,7 @@ namespace GalleryApp
         {
             using (Context c = new Context())
             {
-                var positions = c.Employees.Include("Group").Select(u => new { u.Position }).ToList();
+                var positions = c.Employees.Include("Move_history").Select(u => new { u.full_name, u.Position }).ToList();
                 dataGridView1.DataSource = positions;
             }
         }
@@ -104,7 +104,7 @@ namespace GalleryApp
         {
             using (Context c = new Context())
             {
-                var access = c.Employees.Include("Group").Select(u => new { u.Accesses }).ToList();
+                var access = c.Employees.Include("Move_history").Select(u => new { u.full_name, u.Accesses }).ToList();
                 dataGridView1.DataSource = access;
             }
         }

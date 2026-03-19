@@ -76,7 +76,7 @@ namespace GalleryApp
         {
             using (Context c = new Context())
             {
-                var employees = c.Employees.Include("Group").Select(u => new { u.login, u.password, u.Move_Histories }).ToList();
+                var employees = c.Employees.Include("Move_history").Select(u => new { u.login, u.password, u.Move_Histories }).ToList();
                 dataGridView1.DataSource = employees;
             }
         }

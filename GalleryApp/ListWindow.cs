@@ -31,6 +31,7 @@ namespace GalleryApp
             this.s += _label;
             this.type = _type;
             this.Text = _label;
+            this.labelList.Text = _label;
             LoadTable();
         }
         private void LoadTable()
@@ -78,24 +79,24 @@ namespace GalleryApp
         }
         private void LoadPositions()
         {
-            List<Position> positions = db.Position.ToList();
+            List<Employee> positions = db.Employees.ToList();
             dataGridView1.DataSource = positions;
         }
 
         private void LoadHistory()
         {
-            List<History> history = db.History.ToList();
+            List<Move_history> history = db.Move_Histories.ToList();
             dataGridView1.DataSource = history;
         }
         private void LoadExhibition()
         {
-            List<Exhibition> exhibitions = db.Exhibition.ToList();
+            List<Exhibition> exhibitions = db.Exhibitions.ToList();
             dataGridView1.DataSource = exhibitions;
         }
 
         private void LoadAccess()
         {
-            List<Access> access = db.Access.ToList();
+            List<Employee> access = db.Employees.ToList();
             dataGridView1.DataSource = access;
         }
         private void ListWindow_Load(object sender, EventArgs e)

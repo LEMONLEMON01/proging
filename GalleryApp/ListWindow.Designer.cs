@@ -64,6 +64,7 @@
             this.Controls.Add(this.labelList);
             this.Name = "ListWindow";
             this.Text = "ListWindow";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ListWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

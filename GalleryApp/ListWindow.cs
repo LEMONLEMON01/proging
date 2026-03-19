@@ -74,13 +74,19 @@ namespace GalleryApp
 
         private void LoadEmployees()
         {
-            List<Employee> employees = db.Employees.ToList();
-            dataGridView1.DataSource = employees;
+            using (Context c = new Context())
+            {
+                var employees = c.Employees.Include("Group").Select(u => new { u.login, u.password, u.Move_Histories }).ToList();
+                dataGridView1.DataSource = employees;
+            }
         }
         private void LoadPositions()
         {
-            List<Employee> positions = db.Employees.ToList();
-            dataGridView1.DataSource = positions;
+            using (Context c = new Context())
+            {
+                var positions = c.Employees.Include("Group").Select(u => new { u.Position }).ToList();
+                dataGridView1.DataSource = positions;
+            }
         }
 
         private void LoadHistory()
@@ -96,8 +102,11 @@ namespace GalleryApp
 
         private void LoadAccess()
         {
-            List<Employee> access = db.Employees.ToList();
-            dataGridView1.DataSource = access;
+            using (Context c = new Context())
+            {
+                var access = c.Employees.Include("Group").Select(u => new { u.Accesses }).ToList();
+                dataGridView1.DataSource = access;
+            }
         }
         private void ListWindow_Load(object sender, EventArgs e)
         {

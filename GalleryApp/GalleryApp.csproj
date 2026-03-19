@@ -71,23 +71,11 @@
     <Compile Include="Classes\Move_history.cs" />
     <Compile Include="Classes\Painting.cs" />
     <Compile Include="Classes\Person.cs" />
-    <Compile Include="ExhibitionWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ExhibitionWindow.Designer.cs">
-      <DependentUpon>ExhibitionWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="ListWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListWindow.Designer.cs">
       <DependentUpon>ListWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Menu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202603041127116_init.cs" />
     <Compile Include="Migrations\202603041127116_init.Designer.cs">
@@ -111,9 +99,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListWindow.resx">
       <DependentUpon>ListWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202603041127116_init.resx">
       <DependentUpon>202603041127116_init.cs</DependentUpon>

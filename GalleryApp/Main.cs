@@ -102,5 +102,14 @@ namespace GalleryApp
 
         }
 
+        private void просмотретьОтчетыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void сформироватьОтчетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

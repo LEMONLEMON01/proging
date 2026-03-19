@@ -36,6 +36,8 @@
             this.должностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.праваСотрудникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.просмотретьОтчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сформироватьОтчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,10 +102,27 @@
             // 
             // отчетToolStripMenuItem
             // 
+            this.отчетToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.просмотретьОтчетыToolStripMenuItem,
+            this.сформироватьОтчетToolStripMenuItem});
             this.отчетToolStripMenuItem.Name = "отчетToolStripMenuItem";
             this.отчетToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.отчетToolStripMenuItem.Text = "Отчет";
             this.отчетToolStripMenuItem.Click += new System.EventHandler(this.отчетToolStripMenuItem_Click);
+            // 
+            // просмотретьОтчетыToolStripMenuItem
+            // 
+            this.просмотретьОтчетыToolStripMenuItem.Name = "просмотретьОтчетыToolStripMenuItem";
+            this.просмотретьОтчетыToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
+            this.просмотретьОтчетыToolStripMenuItem.Text = "Отчет по реставрациям";
+            this.просмотретьОтчетыToolStripMenuItem.Click += new System.EventHandler(this.просмотретьОтчетыToolStripMenuItem_Click);
+            // 
+            // сформироватьОтчетToolStripMenuItem
+            // 
+            this.сформироватьОтчетToolStripMenuItem.Name = "сформироватьОтчетToolStripMenuItem";
+            this.сформироватьОтчетToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
+            this.сформироватьОтчетToolStripMenuItem.Text = "Отчет по экспозициям";
+            this.сформироватьОтчетToolStripMenuItem.Click += new System.EventHandler(this.сформироватьОтчетToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -133,5 +152,7 @@
         private System.Windows.Forms.ToolStripMenuItem должностиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem праваСотрудникаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчетToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem просмотретьОтчетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сформироватьОтчетToolStripMenuItem;
     }
 }

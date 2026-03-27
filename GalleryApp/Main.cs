@@ -40,7 +40,6 @@ namespace GalleryApp
 
         private void отчетыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //это должности
             openOrUpdate("Список должностей", "Должности");
         }
 
@@ -78,7 +77,6 @@ namespace GalleryApp
 
         private void отчетToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //отчеты: тут надо будет выбрать из двух 
         }
 
         private void openOrUpdate(string label, string type)

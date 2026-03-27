@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity;
 
 namespace GalleryApp
 {
@@ -16,6 +17,11 @@ namespace GalleryApp
         private string s;
         private string type;
         private Context db;
+        ModalWindow modalWindow;
+
+        private int selectedId;
+        private object selectedObject;
+
         public ListWindow(string _s, string _dataType)
         {
             InitializeComponent();
@@ -27,17 +33,21 @@ namespace GalleryApp
             LoadTable();
         }
 
-        public void updateContent(string _label, string _type) { 
+        public void updateContent(string _label, string _type)
+        {
             this.s += _label;
             this.type = _type;
             this.Text = _label;
             this.labelList.Text = _label;
             LoadTable();
         }
+
         private void LoadTable()
         {
             try
             {
+                selectedId = -1;
+                selectedObject = null;
                 switch (type)
                 {
                     case "Картины":
@@ -60,9 +70,10 @@ namespace GalleryApp
                         break;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка при загрузке данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -76,15 +87,25 @@ namespace GalleryApp
         {
             using (Context c = new Context())
             {
-                var employees = c.Employees.Include("Move_history").Select(u => new { u.full_name, u.date_of_birth, u.login, u.password, u.Move_Histories }).ToList();
+                var employees = c.Employees
+                    .Include("Move_history")
+                    .Select(u => new {
+                        u.Id,
+                        u.full_name,
+                        u.date_of_birth,
+                        u.login,
+                        u.password,
+                        u.Move_Histories
+                    }).ToList();
                 dataGridView1.DataSource = employees;
             }
         }
+
         private void LoadPositions()
         {
             using (Context c = new Context())
             {
-                var positions = c.Employees.Include("Move_history").Select(u => new { u.full_name, u.Position }).ToList();
+                var positions = c.Employees.ToList();
                 dataGridView1.DataSource = positions;
             }
         }
@@ -94,6 +115,7 @@ namespace GalleryApp
             List<Move_history> history = db.Move_Histories.ToList();
             dataGridView1.DataSource = history;
         }
+
         private void LoadExhibition()
         {
             List<Exhibition> exhibitions = db.Exhibitions.ToList();
@@ -104,21 +126,146 @@ namespace GalleryApp
         {
             using (Context c = new Context())
             {
-                var access = c.Employees.Include("Move_history").Select(u => new { u.full_name, u.Accesses }).ToList();
+                var access = c.Employees.ToList();
                 dataGridView1.DataSource = access;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (selectedId != -1)
+            {
+                DialogResult result = MessageBox.Show(
+                    $"Вы уверены, что хотите удалить запись?",
+                    "Подтверждение удаления",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        using (Context c = new Context())
+                        {
+                            DeleteObjectById(c, selectedId);
+                            c.SaveChanges();
+
+                            MessageBox.Show("Запись успешно удалена!", "Успех",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            LoadTable();
+                            selectedId = -1;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при удалении: {ex.Message}", "Ошибка",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите запись для удаления.", "Внимание",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void DeleteObjectById(Context context, int id)
+        {
+            switch (type)
+            {
+                case "Картины":
+                    var painting = context.Paintings.Find(id);
+                    if (painting != null)
+                        context.Paintings.Remove(painting);
+                    break;
+
+                case "Сотрудники":
+                    var employee = context.Employees.Find(id);
+                    if (employee != null)
+                        context.Employees.Remove(employee);
+                    break;
+
+                case "Должности":
+                    var position = context.Employees.Find(id);
+                    if (position != null)
+                        context.Employees.Remove(position);
+                    break;
+
+                case "История":
+                    var history = context.Move_Histories.Find(id);
+                    if (history != null)
+                        context.Move_Histories.Remove(history);
+                    break;
+
+                case "Выставки":
+                    var exhibition = context.Exhibitions.Find(id);
+                    if (exhibition != null)
+                        context.Exhibitions.Remove(exhibition);
+                    break;
+
+                case "Права Сотрудников":
+                    var access = context.Employees.Find(id);
+                    if (access != null)
+                        context.Employees.Remove(access);
+                    break;
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                if (row.Cells["Id"] != null && row.Cells["Id"].Value != null)
+                {
+                    selectedId = (int)row.Cells["Id"].Value;
+
+                    using (Context c = new Context())
+                    {
+                        switch (type)
+                        {
+                            case "Картины":
+                                selectedObject = c.Paintings.Find(selectedId);
+                                break;
+                            case "Сотрудники":
+                                selectedObject = c.Employees.Find(selectedId);
+                                break;
+                            case "Должности":
+                                selectedObject = c.Employees.Find(selectedId);
+                                break;
+                            case "История":
+                                selectedObject = c.Move_Histories.Find(selectedId);
+                                break;
+                            case "Выставки":
+                                selectedObject = c.Exhibitions.Find(selectedId);
+                                break;
+                            case "Права Сотрудников":
+                                selectedObject = c.Employees.Find(selectedId);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void ListWindow_Load(object sender, EventArgs e)
         {
 
         }
 
         private void labelList_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

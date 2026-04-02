@@ -38,3 +38,4 @@ C:\proging\proging\GalleryApp\obj\Debug\GalleryApp.ListWindow.resources
 C:\proging\proging\GalleryApp\obj\Debug\GalleryApp.Menu.resources
 C:\proging\proging\GalleryApp\obj\Debug\GalleryApp.Main.resources
 C:\Users\Персик\source\repos\GalleryApp\GalleryApp\obj\Debug\GalleryApp.ModalWindow.resources
+C:\Users\Персик\source\repos\GalleryApp\GalleryApp\obj\Debug\GalleryApp.AddForms.AddEmployee.resources

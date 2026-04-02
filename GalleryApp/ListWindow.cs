@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
+using GalleryApp.AddForms;
 
 namespace GalleryApp
 {
@@ -17,7 +18,7 @@ namespace GalleryApp
         private string s;
         private string type;
         private Context db;
-        ModalWindow modalWindow;
+        private AddEmployee addEmployee;
 
         private int selectedId;
         private object selectedObject;
@@ -253,8 +254,24 @@ namespace GalleryApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            modalWindow = new ModalWindow(type);
-            modalWindow.ShowDialog();
+            switch (type)
+            {
+                case "Картины":
+                    break;
+                case "Сотрудники":
+                    addEmployee = new AddEmployee();
+                    addEmployee.ShowDialog();
+                    LoadEmployees();
+                    break;
+                case "Должности":
+                    break;
+                case "История":
+                    break;
+                case "Выставки":
+                    break;
+                case "Права Сотрудников":
+                    break;
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

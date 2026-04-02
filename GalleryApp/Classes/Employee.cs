@@ -21,7 +21,6 @@ namespace GalleryApp.Classes
         public string Accesses { get; set; }
         public string login { get; set; }
         public string password { get; set; }
-
         public virtual List<Move_history> Move_Histories { get; set; } = new List<Move_history>();
 
         public override string ToString()

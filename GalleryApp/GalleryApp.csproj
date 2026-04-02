@@ -63,6 +63,12 @@
     <Compile Include="AddForms\AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddForms\AddPainting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForms\AddPainting.Designer.cs">
+      <DependentUpon>AddPainting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
     </Compile>

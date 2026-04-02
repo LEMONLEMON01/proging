@@ -253,6 +253,8 @@ namespace GalleryApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            modalWindow = new ModalWindow(type);
+            modalWindow.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -63,6 +63,18 @@
     <Compile Include="AddForms\AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddForms\AddHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForms\AddHistory.Designer.cs">
+      <DependentUpon>AddHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForms\AddLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForms\AddLocation.Designer.cs">
+      <DependentUpon>AddLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddForms\AddPainting.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -69,6 +69,9 @@ namespace GalleryApp
                     case "Права Сотрудников":
                         LoadAccess();
                         break;
+                    case "Авторы":
+                        LoadAuthors();
+                        break;
                 }
             }
             catch (Exception ex)
@@ -76,6 +79,12 @@ namespace GalleryApp
                 MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void LoadAuthors()
+        {
+            List<Author> authors = db.Authors.ToList();
+            dataGridView1.DataSource = authors;
         }
 
         private void LoadPaintings()

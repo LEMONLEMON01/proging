@@ -38,6 +38,10 @@
             this.отчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.просмотретьОтчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сформироватьОтчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.авторыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.жанрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.позицииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.доступыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,10 +55,14 @@
             this.сотрудникиToolStripMenuItem,
             this.должностиToolStripMenuItem,
             this.праваСотрудникаToolStripMenuItem,
-            this.отчетToolStripMenuItem});
+            this.отчетToolStripMenuItem,
+            this.авторыToolStripMenuItem,
+            this.жанрыToolStripMenuItem,
+            this.позицииToolStripMenuItem,
+            this.доступыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1008, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1114, 28);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -124,11 +132,37 @@
             this.сформироватьОтчетToolStripMenuItem.Text = "Отчет по экспозициям";
             this.сформироватьОтчетToolStripMenuItem.Click += new System.EventHandler(this.сформироватьОтчетToolStripMenuItem_Click);
             // 
+            // авторыToolStripMenuItem
+            // 
+            this.авторыToolStripMenuItem.Name = "авторыToolStripMenuItem";
+            this.авторыToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
+            this.авторыToolStripMenuItem.Text = "Авторы";
+            this.авторыToolStripMenuItem.Click += new System.EventHandler(this.авторыToolStripMenuItem_Click);
+            // 
+            // жанрыToolStripMenuItem
+            // 
+            this.жанрыToolStripMenuItem.Name = "жанрыToolStripMenuItem";
+            this.жанрыToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.жанрыToolStripMenuItem.Text = "Жанры";
+            // 
+            // позицииToolStripMenuItem
+            // 
+            this.позицииToolStripMenuItem.Name = "позицииToolStripMenuItem";
+            this.позицииToolStripMenuItem.Size = new System.Drawing.Size(101, 24);
+            this.позицииToolStripMenuItem.Text = "Должности";
+            this.позицииToolStripMenuItem.Click += new System.EventHandler(this.позицииToolStripMenuItem_Click);
+            // 
+            // доступыToolStripMenuItem
+            // 
+            this.доступыToolStripMenuItem.Name = "доступыToolStripMenuItem";
+            this.доступыToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
+            this.доступыToolStripMenuItem.Text = "Доступы";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 520);
+            this.ClientSize = new System.Drawing.Size(1114, 520);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -154,5 +188,9 @@
         private System.Windows.Forms.ToolStripMenuItem отчетToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem просмотретьОтчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сформироватьОтчетToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem авторыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem жанрыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem позицииToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem доступыToolStripMenuItem;
     }
 }

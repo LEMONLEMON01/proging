@@ -72,6 +72,9 @@ namespace GalleryApp
                     case "Авторы":
                         LoadAuthors();
                         break;
+                    case "Жанры":
+                        LoadGenres();
+                        break;
                 }
             }
             catch (Exception ex)
@@ -79,6 +82,12 @@ namespace GalleryApp
                 MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void LoadGenres()
+        {
+            List<Genre> genres = db.Genres.ToList();
+            dataGridView1.DataSource = genres;
         }
 
         private void LoadAuthors()
@@ -220,6 +229,12 @@ namespace GalleryApp
                     if (access != null)
                         context.Employees.Remove(access);
                     break;
+                case "Авторы":
+                    var author = context.Authors.Find(id);
+                    break;
+                case "Жанры":
+                    var genre = context.Genres.Find(id);
+                    break;
             }
         }
 
@@ -255,6 +270,13 @@ namespace GalleryApp
                             case "Права Сотрудников":
                                 selectedObject = c.Employees.Find(selectedId);
                                 break;
+                            case "Авторы":
+                                selectedObject = c.Authors.Find(selectedId);
+                                break;
+                            case "Жанры":
+                                selectedObject = c.Genres.Find(selectedId);
+                                break;
+
                         }
                     }
                 }
@@ -279,6 +301,10 @@ namespace GalleryApp
                 case "Выставки":
                     break;
                 case "Права Сотрудников":
+                    break;
+                case "Авторы":
+                    break;
+                case "Жанры":
                     break;
             }
         }

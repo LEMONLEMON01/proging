@@ -110,14 +110,14 @@ namespace GalleryApp
 
         }
 
-        private void позицииToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openOrUpdate("Список должностей", "Должности");
-        }
-
         private void авторыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openOrUpdate("Список авторов", "Авторы");
+        }
+
+        private void жанрыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openOrUpdate("Список жанров", "Жанры");
         }
     }
 }

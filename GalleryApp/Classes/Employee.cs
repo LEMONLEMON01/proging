@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GalleryApp.Classes
 {
-    public enum Position { Restorator, Manager, Admin };
+    //public enum Position { Restorator, Manager, Admin };
     public enum Access { Add, Change, Delete };
 
     [Table("Employees")]

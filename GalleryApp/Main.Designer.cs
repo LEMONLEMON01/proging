@@ -40,7 +40,6 @@
             this.сформироватьОтчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.авторыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.жанрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.позицииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.доступыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +57,6 @@
             this.отчетToolStripMenuItem,
             this.авторыToolStripMenuItem,
             this.жанрыToolStripMenuItem,
-            this.позицииToolStripMenuItem,
             this.доступыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -144,13 +142,7 @@
             this.жанрыToolStripMenuItem.Name = "жанрыToolStripMenuItem";
             this.жанрыToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.жанрыToolStripMenuItem.Text = "Жанры";
-            // 
-            // позицииToolStripMenuItem
-            // 
-            this.позицииToolStripMenuItem.Name = "позицииToolStripMenuItem";
-            this.позицииToolStripMenuItem.Size = new System.Drawing.Size(101, 24);
-            this.позицииToolStripMenuItem.Text = "Должности";
-            this.позицииToolStripMenuItem.Click += new System.EventHandler(this.позицииToolStripMenuItem_Click);
+            this.жанрыToolStripMenuItem.Click += new System.EventHandler(this.жанрыToolStripMenuItem_Click);
             // 
             // доступыToolStripMenuItem
             // 
@@ -190,7 +182,6 @@
         private System.Windows.Forms.ToolStripMenuItem сформироватьОтчетToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem авторыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem жанрыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem позицииToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem доступыToolStripMenuItem;
     }
 }

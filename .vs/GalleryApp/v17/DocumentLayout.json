@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\classes\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\exhibition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\exhibition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\listwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\listwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -35,10 +47,6 @@
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\addforms\\addpainting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\classes\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\addforms\\addemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\addforms\\addemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -66,17 +74,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Main.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Main.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Main.cs",
               "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Main.cs",
               "RelativeToolTip": "GalleryApp\\Main.cs",
-              "ViewState": "AQIAAFMAAAAAAAAAAAAmwHIAAAA4AAAA",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAwwHcAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-13T07:02:09.34Z",
               "IsPinned": true,
@@ -84,13 +92,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "ListWindow.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\ListWindow.cs",
               "RelativeDocumentMoniker": "GalleryApp\\ListWindow.cs",
               "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\ListWindow.cs",
               "RelativeToolTip": "GalleryApp\\ListWindow.cs",
-              "ViewState": "AQIAAF0AAAAAAAAAAAAowGUAAAAkAAAA",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAQwHIAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-13T08:11:24.454Z",
               "IsPinned": true,
@@ -98,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "AddEmployee.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddEmployee.cs",
               "RelativeDocumentMoniker": "GalleryApp\\AddForms\\AddEmployee.cs",
@@ -111,7 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "AddEmployee.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddEmployee.cs",
               "RelativeDocumentMoniker": "GalleryApp\\AddForms\\AddEmployee.cs",
@@ -124,6 +132,32 @@
               "EditorCaption": ""
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Exhibition.cs",
+              "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Exhibition.cs",
+              "RelativeDocumentMoniker": "GalleryApp\\Classes\\Exhibition.cs",
+              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Exhibition.cs",
+              "RelativeToolTip": "GalleryApp\\Classes\\Exhibition.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T07:38:41.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Position.cs",
+              "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Position.cs",
+              "RelativeDocumentMoniker": "GalleryApp\\Classes\\Position.cs",
+              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Position.cs",
+              "RelativeToolTip": "GalleryApp\\Classes\\Position.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T07:38:30.505Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
             },
@@ -133,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "AddHistory.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddHistory.cs",
               "RelativeDocumentMoniker": "GalleryApp\\AddForms\\AddHistory.cs",
@@ -145,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "AddLocation.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddLocation.cs",
               "RelativeDocumentMoniker": "GalleryApp\\AddForms\\AddLocation.cs",
@@ -156,7 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "AddPainting.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddPainting.cs",
               "RelativeDocumentMoniker": "GalleryApp\\AddForms\\AddPainting.cs",
@@ -167,7 +201,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Authorization.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Authorization.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Authorization.cs",
@@ -179,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ModalWindow.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\ModalWindow.cs",
               "RelativeDocumentMoniker": "GalleryApp\\ModalWindow.cs",
@@ -191,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "ModalWindow.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\ModalWindow.cs",
               "RelativeDocumentMoniker": "GalleryApp\\ModalWindow.cs",
@@ -202,19 +236,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "Employee.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Employee.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Classes\\Employee.cs",
               "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Employee.cs",
               "RelativeToolTip": "GalleryApp\\Classes\\Employee.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAQwBQAAAAdAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T13:32:43.7Z"
+              "WhenOpened": "2026-04-01T13:32:43.7Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Main.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Main.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Main.cs",
@@ -226,7 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Authorization.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Authorization.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Authorization.cs",
@@ -237,7 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "ListWindow.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\ListWindow.cs",
               "RelativeDocumentMoniker": "GalleryApp\\ListWindow.cs",

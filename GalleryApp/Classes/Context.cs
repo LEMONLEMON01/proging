@@ -14,6 +14,7 @@ namespace GalleryApp.Classes
         }
         
         public DbSet<Person> People { get; set; }
+        public DbSet<Location> Locations { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Painting> Paintings { get; set; }

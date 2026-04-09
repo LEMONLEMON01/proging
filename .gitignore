@@ -3,6 +3,3 @@ obj/
 *.exe
 *.pdb
 *.cache
-.vs/
-*.user
-*.suo

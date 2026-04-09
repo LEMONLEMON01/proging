@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GalleryApp.Classes
 {
-    public enum Status { restoration, storage, exhibition };
+    public enum StatusP { restoration, storage, exhibition };
     public class Painting
     {
         public int Id { get; set; }
@@ -16,11 +16,11 @@ namespace GalleryApp.Classes
         public int Cost { get; set; }
         [Range(0, 2100)]
         public int Year { get; set; }
-        public Status Status { get; set; }
+        public StatusP StatusP { get; set; }
 
         public virtual List<Genre> Genres { get; set; } = new List<Genre>();
         public virtual List<Location> Locations { get; set; } = new List<Location>();
-        public virtual List<Location> Authors { get; set; } = new List<Location>();
+        public virtual List<Author> Authors { get; set; } = new List<Author>();
 
     }
 }

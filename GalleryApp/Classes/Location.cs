@@ -13,6 +13,7 @@ namespace GalleryApp.Classes
     {
         public int Id { get; set; }
         [MaxLength(250)]
-        public string Name { get; set; } 
+        public string Name { get; set; }
+        public virtual List<Painting> Paintings { get; set; } = new List<Painting>();
     }
 }

@@ -103,13 +103,9 @@
     <Compile Include="ListWindow.Designer.cs">
       <DependentUpon>ListWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202603041127116_init.cs" />
-    <Compile Include="Migrations\202603041127116_init.Designer.cs">
-      <DependentUpon>202603041127116_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202603041140463_addDbSets.cs" />
-    <Compile Include="Migrations\202603041140463_addDbSets.Designer.cs">
-      <DependentUpon>202603041140463_addDbSets.cs</DependentUpon>
+    <Compile Include="Migrations\202604100724110_init.cs" />
+    <Compile Include="Migrations\202604100724110_init.Designer.cs">
+      <DependentUpon>202604100724110_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Main.cs">
@@ -138,14 +134,11 @@
     <EmbeddedResource Include="ListWindow.resx">
       <DependentUpon>ListWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202603041127116_init.resx">
-      <DependentUpon>202603041127116_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202603041140463_addDbSets.resx">
-      <DependentUpon>202603041140463_addDbSets.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202604100724110_init.resx">
+      <DependentUpon>202604100724110_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModalWindow.resx">
       <DependentUpon>ModalWindow.cs</DependentUpon>

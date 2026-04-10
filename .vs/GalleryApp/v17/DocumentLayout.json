@@ -3,7 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\addforms\\addemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\listwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\listwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\addforms\\addemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\addforms\\addemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,48 +23,40 @@
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\addforms\\addemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\classes\\position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\classes\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\classes\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\classes\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\migrations\\202604100724110_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\migrations\\202604100724110_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\migrations\\202604100724110_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\addforms\\addpainting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\addforms\\addpainting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\addforms\\addpainting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\migrations\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\painting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\classes\\painting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\painting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|c:\\users\\\u043F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\galleryapp\\galleryapp\\classes\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\classes\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\classes\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\listwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\listwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\galleryapp\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FAA0145A-A18C-430E-B137-DAF199130A8C}|GalleryApp\\GalleryApp.csproj|solutionrelative:galleryapp\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,17 +66,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 1,
               "Title": "Main.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Main.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Main.cs",
               "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Main.cs",
               "RelativeToolTip": "GalleryApp\\Main.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAwwHcAAAAwAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAwHcAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-13T07:02:09.34Z",
               "IsPinned": true,
@@ -80,13 +84,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 2,
               "Title": "ListWindow.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\ListWindow.cs",
               "RelativeDocumentMoniker": "GalleryApp\\ListWindow.cs",
               "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\ListWindow.cs",
               "RelativeToolTip": "GalleryApp\\ListWindow.cs",
-              "ViewState": "AQIAAFEAAAAAAAAAAAAQwHIAAAAgAAAA",
+              "ViewState": "AQIAAIUAAAAAAAAAAADwv4IAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-13T08:11:24.454Z",
               "IsPinned": true,
@@ -94,30 +98,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AddEmployee.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentIndex": 4,
+              "Title": "AddEmployee.cs [Design]",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddEmployee.cs",
               "RelativeDocumentMoniker": "GalleryApp\\AddForms\\AddEmployee.cs",
-              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddEmployee.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "GalleryApp\\AddForms\\AddEmployee.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddEmployee.cs [Design]",
+              "RelativeToolTip": "GalleryApp\\AddForms\\AddEmployee.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-02T02:50:24.515Z",
               "IsPinned": true,
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "AddEmployee.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddEmployee.cs",
               "RelativeDocumentMoniker": "GalleryApp\\AddForms\\AddEmployee.cs",
               "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddEmployee.cs",
               "RelativeToolTip": "GalleryApp\\AddForms\\AddEmployee.cs",
-              "ViewState": "AQIAADoAAAAAAAAAAAAwwEQAAAA6AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEYAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-02T02:50:28.737Z",
               "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Main.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Main.cs",
+              "RelativeDocumentMoniker": "GalleryApp\\Main.cs",
+              "ToolTip": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Main.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "GalleryApp\\Main.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-10T08:18:26.797Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Bookmark",
@@ -129,7 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Position.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Position.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Classes\\Position.cs",
@@ -137,12 +153,11 @@
               "RelativeToolTip": "GalleryApp\\Classes\\Position.cs",
               "ViewState": "AQIAAAUAAAAAAAAAAAAgwBMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T07:33:41.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T07:33:41.501Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Employee.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Employee.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Classes\\Employee.cs",
@@ -150,12 +165,11 @@
               "RelativeToolTip": "GalleryApp\\Classes\\Employee.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAAYwB8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T07:30:27.978Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T07:30:27.978Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "202604100724110_init.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Migrations\\202604100724110_init.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Migrations\\202604100724110_init.cs",
@@ -163,12 +177,11 @@
               "RelativeToolTip": "GalleryApp\\Migrations\\202604100724110_init.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T07:24:20.82Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T07:24:20.82Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Configuration.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Migrations\\Configuration.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Migrations\\Configuration.cs",
@@ -176,12 +189,11 @@
               "RelativeToolTip": "GalleryApp\\Migrations\\Configuration.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T07:11:39.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T07:11:39.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "AddPainting.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\AddForms\\AddPainting.cs",
               "RelativeDocumentMoniker": "GalleryApp\\AddForms\\AddPainting.cs",
@@ -189,12 +201,11 @@
               "RelativeToolTip": "GalleryApp\\AddForms\\AddPainting.cs",
               "ViewState": "AQIAAFMAAAAAAAAAAIAwwF0AAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T07:01:43.822Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T07:01:43.822Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Location.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Location.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Classes\\Location.cs",
@@ -202,12 +213,11 @@
               "RelativeToolTip": "GalleryApp\\Classes\\Location.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAawA0AAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T06:56:26.564Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T06:56:26.564Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Context.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Context.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Classes\\Context.cs",
@@ -215,12 +225,11 @@
               "RelativeToolTip": "GalleryApp\\Classes\\Context.cs",
               "ViewState": "AQIAABQAAAAAAAAAAAA3wCIAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T06:55:52.028Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T06:55:52.028Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Author.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Author.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Classes\\Author.cs",
@@ -228,12 +237,11 @@
               "RelativeToolTip": "GalleryApp\\Classes\\Author.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T06:55:47.878Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T06:55:47.878Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Painting.cs",
               "DocumentMoniker": "C:\\Users\\\u041F\u0435\u0440\u0441\u0438\u043A\\source\\repos\\GalleryApp\\GalleryApp\\Classes\\Painting.cs",
               "RelativeDocumentMoniker": "GalleryApp\\Classes\\Painting.cs",
@@ -241,8 +249,7 @@
               "RelativeToolTip": "GalleryApp\\Classes\\Painting.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAAYwBYAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T06:50:42.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T06:50:42.684Z"
             }
           ]
         }

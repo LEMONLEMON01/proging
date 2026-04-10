@@ -34,7 +34,6 @@
             this.выставкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.должностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.праваСотрудникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.просмотретьОтчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сформироватьОтчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +52,6 @@
             this.выставкиToolStripMenuItem,
             this.сотрудникиToolStripMenuItem,
             this.должностиToolStripMenuItem,
-            this.праваСотрудникаToolStripMenuItem,
             this.отчетToolStripMenuItem,
             this.авторыToolStripMenuItem,
             this.жанрыToolStripMenuItem,
@@ -98,13 +96,6 @@
             this.должностиToolStripMenuItem.Size = new System.Drawing.Size(101, 24);
             this.должностиToolStripMenuItem.Text = "Должности";
             this.должностиToolStripMenuItem.Click += new System.EventHandler(this.отчетыToolStripMenuItem_Click);
-            // 
-            // праваСотрудникаToolStripMenuItem
-            // 
-            this.праваСотрудникаToolStripMenuItem.Name = "праваСотрудникаToolStripMenuItem";
-            this.праваСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
-            this.праваСотрудникаToolStripMenuItem.Text = "Права сотрудника";
-            this.праваСотрудникаToolStripMenuItem.Click += new System.EventHandler(this.праваСотрудникаToolStripMenuItem_Click);
             // 
             // отчетToolStripMenuItem
             // 
@@ -176,7 +167,6 @@
         private System.Windows.Forms.ToolStripMenuItem выставкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem должностиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem праваСотрудникаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчетToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem просмотретьОтчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сформироватьОтчетToolStripMenuItem;

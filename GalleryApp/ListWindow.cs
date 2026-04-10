@@ -19,6 +19,9 @@ namespace GalleryApp
         private string type;
         private Context db;
         private AddEmployee addEmployee;
+        private AddPainting addPainting;
+        private AddLocation addLocation;
+        private AddHistory addHistory;
 
         private int selectedId;
         private object selectedObject;
@@ -124,7 +127,7 @@ namespace GalleryApp
         {
             using (Context c = new Context())
             {
-                var positions = c.Employees.ToList();
+                var positions = c.Posiitions.ToList();
                 dataGridView1.DataSource = positions;
             }
         }
@@ -288,6 +291,9 @@ namespace GalleryApp
             switch (type)
             {
                 case "Картины":
+                    addPainting = new AddPainting();
+                    addPainting.ShowDialog();
+                    LoadPaintings();
                     break;
                 case "Сотрудники":
                     addEmployee = new AddEmployee();

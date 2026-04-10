@@ -19,8 +19,17 @@ namespace GalleryApp.AddForms
             InitializeComponent();
             db = new Context();
             checkedListBox1.Items.AddRange(Enum.GetNames(typeof(Access)));
-            comboBox1.Items.AddRange(Enum.GetNames(typeof(Position)));
+
+            LoadPositions();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        public void LoadPositions()
+        {
+            var positions = db.Posiitions.ToList();
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "Id";
+            comboBox1.DataSource = positions;
         }
 
         private void AddEmployee_Load(object sender, EventArgs e)
@@ -60,7 +69,8 @@ namespace GalleryApp.AddForms
                 employee.full_name = textBox1.Text.Trim();
                 employee.login = textBox2.Text.Trim();
                 employee.password = textBox3.Text.Trim();
-                employee.Position = (Position)Enum.Parse(typeof(Position), comboBox1.SelectedItem.ToString());
+                Position selectedPosition = (Position)comboBox1.SelectedItem;
+                employee.Position = selectedPosition;
                 employee.date_of_birth = dateTimePicker1.Value;
 
                 db.Employees.Add(employee);

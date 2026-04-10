@@ -91,7 +91,7 @@ namespace GalleryApp.AddForms
             painting.Genres.Add(selectedGenre);
 
             Location selectedLocation = (Location)comboBox3.SelectedItem;
-            painting.Locations.Add(selectedLocation);
+            painting.Location = selectedLocation;
 
             foreach (Author author in checkedListBox1.CheckedItems)
             {

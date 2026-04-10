@@ -103,11 +103,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(407, 80);
+            this.label4.Location = new System.Drawing.Point(407, 83);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 16);
             this.label4.TabIndex = 32;
             this.label4.Text = "год";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // button1
             // 
@@ -142,7 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 412);
+            this.ClientSize = new System.Drawing.Size(602, 413);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

@@ -23,6 +23,9 @@ namespace GalleryApp
         private AddPainting addPainting;
         private AddLocation addLocation;
         private AddHistory addHistory;
+        private AddAuthor addAuthor;
+        private AddGenre addGenre;
+        private AddPosition addPosition;
 
         private RedactEmployee redactEmployee;
 
@@ -70,7 +73,7 @@ namespace GalleryApp
                         LoadHistory();
                         break;
                     case "Выставки":
-                        LoadExhibition();
+                        LoadLocation();
                         break;
                     case "Авторы":
                         LoadAuthors();
@@ -138,10 +141,10 @@ namespace GalleryApp
             dataGridView1.DataSource = history;
         }
 
-        private void LoadExhibition()
+        private void LoadLocation()
         {
-            List<Exhibition> exhibitions = db.Exhibitions.ToList();
-            dataGridView1.DataSource = exhibitions;
+            List<Location> locations = db.Locations.ToList();
+            dataGridView1.DataSource = locations;
         }
 
         private void LoadAccess()
@@ -222,16 +225,20 @@ namespace GalleryApp
                     break;
 
                 case "Выставки":
-                    var exhibition = context.Exhibitions.Find(id);
-                    if (exhibition != null)
-                        context.Exhibitions.Remove(exhibition);
+                    var location = context.Locations.Find(id);
+                    if (location != null)
+                        context.Locations.Remove(location);
                     break;
 
                 case "Авторы":
                     var author = context.Authors.Find(id);
+                    if (author != null)
+                        context.Authors.Remove(author);
                     break;
                 case "Жанры":
                     var genre = context.Genres.Find(id);
+                    if (genre != null)
+                        context.Genres.Remove(genre);
                     break;
             }
         }
@@ -263,7 +270,7 @@ namespace GalleryApp
                                 selectedObject = c.Move_Histories.Find(selectedId);
                                 break;
                             case "Выставки":
-                                selectedObject = c.Exhibitions.Find(selectedId);
+                                selectedObject = c.Locations.Find(selectedId);
                                 break;
                             case "Права Сотрудников":
                                 selectedObject = c.Employees.Find(selectedId);
@@ -296,7 +303,9 @@ namespace GalleryApp
                     LoadEmployees();
                     break;
                 case "Должности":
-                    
+                    addPosition = new AddPosition();
+                    addPosition.ShowDialog();
+                    LoadPositions();
                     break;
                 case "История":
                     addHistory = new AddHistory();
@@ -304,13 +313,19 @@ namespace GalleryApp
                     LoadHistory();
                     break;
                 case "Выставки":
-                    
+                    addLocation = new AddLocation();
+                    addLocation.ShowDialog();
+                    LoadLocation();
                     break;                
                 case "Авторы":
-                    
+                    addAuthor = new AddAuthor();
+                    addAuthor.ShowDialog();
+                    LoadAuthors();
                     break;
                 case "Жанры":
-                    
+                    addGenre = new AddGenre();
+                    addGenre.ShowDialog();
+                    LoadGenres();
                     break;
             }
         }

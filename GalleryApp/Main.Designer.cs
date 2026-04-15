@@ -39,7 +39,6 @@
             this.сформироватьОтчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.авторыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.жанрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.доступыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,8 +53,7 @@
             this.должностиToolStripMenuItem,
             this.отчетToolStripMenuItem,
             this.авторыToolStripMenuItem,
-            this.жанрыToolStripMenuItem,
-            this.доступыToolStripMenuItem});
+            this.жанрыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1114, 28);
@@ -135,12 +133,6 @@
             this.жанрыToolStripMenuItem.Text = "Жанры";
             this.жанрыToolStripMenuItem.Click += new System.EventHandler(this.жанрыToolStripMenuItem_Click);
             // 
-            // доступыToolStripMenuItem
-            // 
-            this.доступыToolStripMenuItem.Name = "доступыToolStripMenuItem";
-            this.доступыToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
-            this.доступыToolStripMenuItem.Text = "Доступы";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -172,6 +164,5 @@
         private System.Windows.Forms.ToolStripMenuItem сформироватьОтчетToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem авторыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem жанрыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem доступыToolStripMenuItem;
     }
 }

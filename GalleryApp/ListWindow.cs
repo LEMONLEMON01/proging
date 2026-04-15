@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
 using GalleryApp.AddForms;
+using GalleryApp.RedactForms;
 
 namespace GalleryApp
 {
@@ -22,6 +23,8 @@ namespace GalleryApp
         private AddPainting addPainting;
         private AddLocation addLocation;
         private AddHistory addHistory;
+
+        private RedactEmployee redactEmployee;
 
         private int selectedId;
         private object selectedObject;
@@ -68,9 +71,6 @@ namespace GalleryApp
                         break;
                     case "Выставки":
                         LoadExhibition();
-                        break;
-                    case "Права Сотрудников":
-                        LoadAccess();
                         break;
                     case "Авторы":
                         LoadAuthors();
@@ -227,11 +227,6 @@ namespace GalleryApp
                         context.Exhibitions.Remove(exhibition);
                     break;
 
-                case "Права Сотрудников":
-                    var access = context.Employees.Find(id);
-                    if (access != null)
-                        context.Employees.Remove(access);
-                    break;
                 case "Авторы":
                     var author = context.Authors.Find(id);
                     break;
@@ -333,6 +328,46 @@ namespace GalleryApp
         private void labelList_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("Пожалуйста, выберите запись для редактирования.", "Внимание",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                int selected_id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
+
+                switch (type)
+                {
+                    case "Картины":
+
+                        break;
+                    case "Сотрудники":
+                        redactEmployee = new RedactEmployee(selected_id);
+                        redactEmployee.ShowDialog();
+                        LoadEmployees();
+                        break;
+                    case "Должности":
+
+                        break;
+                    case "История":
+
+                        break;
+                    case "Выставки":
+
+                        break;
+                    case "Авторы":
+
+                        break;
+                    case "Жанры":
+
+                        break;
+                }
+            }
         }
     }
 }

@@ -73,6 +73,16 @@ namespace GalleryApp.AddForms
                 employee.Position = selectedPosition;
                 employee.date_of_birth = dateTimePicker1.Value;
 
+                List<string> selectedAccesses = new List<string>();
+                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                {
+                    if (checkedListBox1.GetItemChecked(i))
+                    {
+                        selectedAccesses.Add(checkedListBox1.Items[i].ToString());
+                    }
+                }
+                employee.Accesses = string.Join(",", selectedAccesses);
+
                 db.Employees.Add(employee);
                 db.SaveChanges();
                 this.Close();
@@ -81,6 +91,8 @@ namespace GalleryApp.AddForms
             {
                 MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

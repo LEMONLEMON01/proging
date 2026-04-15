@@ -301,16 +301,21 @@ namespace GalleryApp
                     LoadEmployees();
                     break;
                 case "Должности":
+                    
                     break;
                 case "История":
+                    addHistory = new AddHistory();
+                    addHistory.ShowDialog();
+                    LoadHistory();
                     break;
                 case "Выставки":
-                    break;
-                case "Права Сотрудников":
-                    break;
+                    
+                    break;                
                 case "Авторы":
+                    
                     break;
                 case "Жанры":
+                    
                     break;
             }
         }

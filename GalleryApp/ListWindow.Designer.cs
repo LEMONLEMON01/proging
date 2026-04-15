@@ -33,15 +33,22 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.comboBoxFilterBy = new System.Windows.Forms.ComboBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonClearSearch = new System.Windows.Forms.Button();
+            this.labelSearch = new System.Windows.Forms.Label();
+            this.labelFilter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelList
             // 
             this.labelList.AutoSize = true;
-            this.labelList.Location = new System.Drawing.Point(356, 43);
+            this.labelList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelList.Location = new System.Drawing.Point(30, 20);
             this.labelList.Name = "labelList";
-            this.labelList.Size = new System.Drawing.Size(54, 16);
+            this.labelList.Size = new System.Drawing.Size(84, 25);
             this.labelList.TabIndex = 0;
             this.labelList.Text = "Список";
             this.labelList.Click += new System.EventHandler(this.labelList_Click);
@@ -88,12 +95,72 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(116, 383);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(180, 22);
+            this.textBoxSearch.TabIndex = 6;
+            // 
+            // comboBoxFilterBy
+            // 
+            this.comboBoxFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxFilterBy.FormattingEnabled = true;
+            this.comboBoxFilterBy.Location = new System.Drawing.Point(386, 386);
+            this.comboBoxFilterBy.Name = "comboBoxFilterBy";
+            this.comboBoxFilterBy.Size = new System.Drawing.Size(120, 24);
+            this.comboBoxFilterBy.TabIndex = 8;
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(522, 386);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(80, 25);
+            this.buttonSearch.TabIndex = 9;
+            this.buttonSearch.Text = "Найти";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // buttonClearSearch
+            // 
+            this.buttonClearSearch.Location = new System.Drawing.Point(619, 386);
+            this.buttonClearSearch.Name = "buttonClearSearch";
+            this.buttonClearSearch.Size = new System.Drawing.Size(80, 25);
+            this.buttonClearSearch.TabIndex = 10;
+            this.buttonClearSearch.Text = "Сброс";
+            this.buttonClearSearch.UseVisualStyleBackColor = true;
+            this.buttonClearSearch.Click += new System.EventHandler(this.buttonClearSearch_Click);
+            // 
+            // labelSearch
+            // 
+            this.labelSearch.AutoSize = true;
+            this.labelSearch.Location = new System.Drawing.Point(32, 389);
+            this.labelSearch.Name = "labelSearch";
+            this.labelSearch.Size = new System.Drawing.Size(50, 16);
+            this.labelSearch.TabIndex = 5;
+            this.labelSearch.Text = "Поиск:";
+            // 
+            // labelFilter
+            // 
+            this.labelFilter.AutoSize = true;
+            this.labelFilter.Location = new System.Drawing.Point(302, 389);
+            this.labelFilter.Name = "labelFilter";
+            this.labelFilter.Size = new System.Drawing.Size(78, 16);
+            this.labelFilter.TabIndex = 7;
+            this.labelFilter.Text = "Фильтр по:";
+            // 
             // ListWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonClearSearch);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.comboBoxFilterBy);
+            this.Controls.Add(this.labelFilter);
+            this.Controls.Add(this.textBoxSearch);
+            this.Controls.Add(this.labelSearch);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -116,5 +183,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.ComboBox comboBoxFilterBy;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonClearSearch;
+        private System.Windows.Forms.Label labelSearch;
+        private System.Windows.Forms.Label labelFilter;
     }
 }

@@ -213,9 +213,9 @@ namespace GalleryApp
                     break;
 
                 case "Должности":
-                    var position = context.Employees.Find(id);
+                    var position = context.Posiitions.Find(id);
                     if (position != null)
-                        context.Employees.Remove(position);
+                        context.Posiitions.Remove(position);
                     break;
 
                 case "История":

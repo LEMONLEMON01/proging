@@ -51,9 +51,9 @@
             this.выставкиToolStripMenuItem,
             this.сотрудникиToolStripMenuItem,
             this.должностиToolStripMenuItem,
-            this.отчетToolStripMenuItem,
             this.авторыToolStripMenuItem,
-            this.жанрыToolStripMenuItem});
+            this.жанрыToolStripMenuItem,
+            this.отчетToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1114, 28);

@@ -31,8 +31,8 @@ namespace GalleryApp
 
         private int selectedId;
         private object selectedObject;
-        private string currentSearchText = "";
-        private string currentFilterColumn = "";
+        private string searchText = "";
+        private string filterText = "";
 
         public ListWindow(string _s, string _dataType)
         {
@@ -48,39 +48,56 @@ namespace GalleryApp
         private void InitializeFilterComboBox()
         {
             comboBoxFilterBy.Items.Clear();
+            comboBox1.Items.Clear();
             switch (type)
             {
                 case "Картины":
                     comboBoxFilterBy.Items.AddRange(new string[] { "Название", "Год", "Статус" });
+                    comboBox1.Items.AddRange(new string[] { "Название", "Год", "Статус" });
                     comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
                     break;
                 case "Сотрудники":
                     comboBoxFilterBy.Items.AddRange(new string[] { "ФИО", "Логин" });
+                    comboBox1.Items.AddRange(new string[] { "ФИО", "Логин" });
                     comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
                     break;
                 case "Должности":
                     comboBoxFilterBy.Items.AddRange(new string[] { "Название" });
+                    comboBox1.Items.AddRange(new string[] { "Название" });
                     comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
                     break;
                 case "История":
                     comboBoxFilterBy.Items.AddRange(new string[] { "Дата", "Откуда", "Куда" });
+                    comboBox1.Items.AddRange(new string[] { "Дата", "Откуда", "Куда" });
                     comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
                     break;
                 case "Выставки":
                     comboBoxFilterBy.Items.AddRange(new string[] { "Название", "Город", "Улица" });
+                    comboBox1.Items.AddRange(new string[] { "Название", "Город", "Улица" });
                     comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
                     break;
                 case "Авторы":
                     comboBoxFilterBy.Items.AddRange(new string[] { "ФИО", "Год рождения" });
+                    comboBox1.Items.AddRange(new string[] { "ФИО", "Год рождения" });
                     comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
                     break;
                 case "Жанры":
                     comboBoxFilterBy.Items.AddRange(new string[] { "Название" });
+                    comboBox1.Items.AddRange(new string[] { "Название" });
                     comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
                     break;
                 default:
                     comboBoxFilterBy.Items.Add("Название");
+                    comboBox1.Items.AddRange(new string[] { "Название"});
                     comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
                     break;
             }
         }
@@ -103,25 +120,25 @@ namespace GalleryApp
                 switch (type)
                 {
                     case "Картины":
-                        LoadPaintings(currentSearchText, currentFilterColumn);
+                        LoadPaintings(searchText, filterText);
                         break;
                     case "Сотрудники":
-                        LoadEmployees(currentSearchText, currentFilterColumn);
+                        LoadEmployees(searchText, filterText);
                         break;
                     case "Должности":
-                        LoadPositions(currentSearchText, currentFilterColumn);
+                        LoadPositions(searchText, filterText);
                         break;
                     case "История":
-                        LoadHistory(currentSearchText, currentFilterColumn);
+                        LoadHistory(searchText, filterText);
                         break;
                     case "Выставки":
-                        LoadLocation(currentSearchText, currentFilterColumn);
+                        LoadLocation(searchText, filterText);
                         break;
                     case "Авторы":
-                        LoadAuthors(currentSearchText, currentFilterColumn);
+                        LoadAuthors(searchText, filterText);
                         break;
                     case "Жанры":
-                        LoadGenres(currentSearchText, currentFilterColumn);
+                        LoadGenres(searchText, filterText);
                         break;
                 }
             }
@@ -384,37 +401,37 @@ namespace GalleryApp
                 case "Картины":
                     addPainting = new AddPainting();
                     addPainting.ShowDialog();
-                    LoadPaintings(currentSearchText, currentFilterColumn);
+                    LoadPaintings(searchText, filterText);
                     break;
                 case "Сотрудники":
                     addEmployee = new AddEmployee();
                     addEmployee.ShowDialog();
-                    LoadEmployees(currentSearchText, currentFilterColumn);
+                    LoadEmployees(searchText, filterText);
                     break;
                 case "Должности":
                     addPosition = new AddPosition();
                     addPosition.ShowDialog();
-                    LoadPositions(currentSearchText, currentFilterColumn);
+                    LoadPositions(searchText, filterText);
                     break;
                 case "История":
                     addHistory = new AddHistory();
                     addHistory.ShowDialog();
-                    LoadHistory(currentSearchText, currentFilterColumn);
+                    LoadHistory(searchText, filterText);
                     break;
                 case "Выставки":
                     addLocation = new AddLocation();
                     addLocation.ShowDialog();
-                    LoadLocation(currentSearchText, currentFilterColumn);
+                    LoadLocation(searchText, filterText);
                     break;                
                 case "Авторы":
                     addAuthor = new AddAuthor();
                     addAuthor.ShowDialog();
-                    LoadAuthors(currentSearchText, currentFilterColumn);
+                    LoadAuthors(searchText, filterText);
                     break;
                 case "Жанры":
                     addGenre = new AddGenre();
                     addGenre.ShowDialog();
-                    LoadGenres(currentSearchText, currentFilterColumn);
+                    LoadGenres(searchText, filterText);
                     break;
             }
         }
@@ -453,7 +470,7 @@ namespace GalleryApp
                     case "Сотрудники":
                         redactEmployee = new RedactEmployee(selected_id);
                         redactEmployee.ShowDialog();
-                        LoadEmployees(currentSearchText, currentFilterColumn);
+                        LoadEmployees(searchText, filterText);
                         break;
                     case "Должности":
 
@@ -476,10 +493,44 @@ namespace GalleryApp
 
         private void buttonClearSearch_Click(object sender, EventArgs e)
         {
-
+            textBoxSearch.Text = "";
+            searchText = "";
+            LoadTable();
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            searchText = textBoxSearch.Text;
+            filterText = comboBoxFilterBy.SelectedItem?.ToString() ?? "";
+            LoadTable();
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelFilter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxFilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

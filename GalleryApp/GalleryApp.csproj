@@ -59,11 +59,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddForms\AddAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForms\AddAuthor.Designer.cs">
+      <DependentUpon>AddAuthor.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddForms\AddEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddForms\AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForms\AddGenre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForms\AddGenre.Designer.cs">
+      <DependentUpon>AddGenre.cs</DependentUpon>
     </Compile>
     <Compile Include="AddForms\AddHistory.cs">
       <SubType>Form</SubType>
@@ -82,6 +94,12 @@
     </Compile>
     <Compile Include="AddForms\AddPainting.Designer.cs">
       <DependentUpon>AddPainting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForms\AddPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForms\AddPosition.Designer.cs">
+      <DependentUpon>AddPosition.cs</DependentUpon>
     </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
@@ -130,11 +148,20 @@
     <Compile Include="RedactForms\RedactEmployee.Designer.cs">
       <DependentUpon>RedactEmployee.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddForms\AddAuthor.resx">
+      <DependentUpon>AddAuthor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddForms\AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddForms\AddGenre.resx">
+      <DependentUpon>AddGenre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddForms\AddPainting.resx">
       <DependentUpon>AddPainting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForms\AddPosition.resx">
+      <DependentUpon>AddPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>

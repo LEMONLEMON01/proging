@@ -44,7 +44,7 @@
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -130,8 +130,29 @@
     <Compile Include="RedactForms\RedactEmployee.Designer.cs">
       <DependentUpon>RedactEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="RedactForms\RedactGenre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedactForms\RedactGenre.Designer.cs">
+      <DependentUpon>RedactGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RedactForms\RedactLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedactForms\RedactLocation.Designer.cs">
+      <DependentUpon>RedactLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RedactForms\RedactPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedactForms\RedactPosition.Designer.cs">
+      <DependentUpon>RedactPosition.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddForms\AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForms\AddLocation.resx">
+      <DependentUpon>AddLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddForms\AddPainting.resx">
       <DependentUpon>AddPainting.cs</DependentUpon>
@@ -162,6 +183,15 @@
     </Compile>
     <EmbeddedResource Include="RedactForms\RedactEmployee.resx">
       <DependentUpon>RedactEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RedactForms\RedactGenre.resx">
+      <DependentUpon>RedactGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RedactForms\RedactLocation.resx">
+      <DependentUpon>RedactLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RedactForms\RedactPosition.resx">
+      <DependentUpon>RedactPosition.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

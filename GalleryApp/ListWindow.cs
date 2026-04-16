@@ -28,6 +28,9 @@ namespace GalleryApp
         private AddPosition addPosition;
 
         private RedactEmployee redactEmployee;
+        private RedactPainting redactPainting;
+        private RedactAuthor redactAuthor;
+        private RedactHistory redactHistory;
 
         private int selectedId;
         private object selectedObject;
@@ -465,7 +468,9 @@ namespace GalleryApp
                 switch (type)
                 {
                     case "Картины":
-
+                        redactPainting = new RedactPainting(selected_id);
+                        redactPainting.ShowDialog();
+                        LoadPaintings(searchText, filterText);
                         break;
                     case "Сотрудники":
                         redactEmployee = new RedactEmployee(selected_id);
@@ -476,13 +481,17 @@ namespace GalleryApp
 
                         break;
                     case "История":
-
+                        redactHistory = new RedactHistory(selected_id);
+                        redactHistory.ShowDialog();
+                        LoadHistory(searchText, filterText);
                         break;
                     case "Выставки":
 
                         break;
                     case "Авторы":
-
+                        redactAuthor = new RedactAuthor(selected_id);
+                        redactAuthor.ShowDialog();
+                        LoadAuthors(searchText, filterText);
                         break;
                     case "Жанры":
 

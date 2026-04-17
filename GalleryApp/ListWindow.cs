@@ -126,6 +126,7 @@ namespace GalleryApp
             this.Text = _label;
             this.labelList.Text = _label;
             InitializeFilterComboBox();
+            InitializeSorting();
 
             sort = "";
             sortType = "Без сортировки";
@@ -313,7 +314,7 @@ namespace GalleryApp
         {
             using (Context c = new Context())
             {
-                var query = c.Employees.Include("Move_history").AsQueryable();
+                var query = c.Employees.Include("Move_Histories").AsQueryable();
                 if (!string.IsNullOrWhiteSpace(searchText))
                 {
                     if (filterColumn == "ФИО")

@@ -59,11 +59,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddForms\AddAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForms\AddAuthor.Designer.cs">
+      <DependentUpon>AddAuthor.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddForms\AddEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddForms\AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForms\AddGenre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForms\AddGenre.Designer.cs">
+      <DependentUpon>AddGenre.cs</DependentUpon>
     </Compile>
     <Compile Include="AddForms\AddHistory.cs">
       <SubType>Form</SubType>
@@ -82,6 +94,12 @@
     </Compile>
     <Compile Include="AddForms\AddPainting.Designer.cs">
       <DependentUpon>AddPainting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForms\AddPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForms\AddPosition.Designer.cs">
+      <DependentUpon>AddPosition.cs</DependentUpon>
     </Compile>
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
@@ -124,12 +142,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedactForms\RedactAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedactForms\RedactAuthor.Designer.cs">
+      <DependentUpon>RedactAuthor.cs</DependentUpon>
+    </Compile>
     <Compile Include="RedactForms\RedactEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RedactForms\RedactEmployee.Designer.cs">
       <DependentUpon>RedactEmployee.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="RedactForms\RedactGenre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,9 +178,34 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddForms\AddLocation.resx">
       <DependentUpon>AddLocation.cs</DependentUpon>
+=======
+    <Compile Include="RedactForms\RedactHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedactForms\RedactHistory.Designer.cs">
+      <DependentUpon>RedactHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RedactForms\RedactPainting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedactForms\RedactPainting.Designer.cs">
+      <DependentUpon>RedactPainting.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddForms\AddAuthor.resx">
+      <DependentUpon>AddAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForms\AddEmployee.resx">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForms\AddGenre.resx">
+      <DependentUpon>AddGenre.cs</DependentUpon>
+>>>>>>> 9b8c6444b3e815de6990be7b9228edc44577d72f
     </EmbeddedResource>
     <EmbeddedResource Include="AddForms\AddPainting.resx">
       <DependentUpon>AddPainting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForms\AddPosition.resx">
+      <DependentUpon>AddPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
@@ -181,9 +231,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RedactForms\RedactAuthor.resx">
+      <DependentUpon>RedactAuthor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RedactForms\RedactEmployee.resx">
       <DependentUpon>RedactEmployee.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="RedactForms\RedactGenre.resx">
       <DependentUpon>RedactGenre.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +246,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RedactForms\RedactPosition.resx">
       <DependentUpon>RedactPosition.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="RedactForms\RedactHistory.resx">
+      <DependentUpon>RedactHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RedactForms\RedactPainting.resx">
+      <DependentUpon>RedactPainting.cs</DependentUpon>
+>>>>>>> 9b8c6444b3e815de6990be7b9228edc44577d72f
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

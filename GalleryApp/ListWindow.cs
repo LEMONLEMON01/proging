@@ -28,9 +28,14 @@ namespace GalleryApp
         private AddPosition addPosition;
 
         private RedactEmployee redactEmployee;
+        private RedactPainting redactPainting;
+        private RedactAuthor redactAuthor;
+        private RedactHistory redactHistory;
 
         private int selectedId;
         private object selectedObject;
+        private string searchText = "";
+        private string filterText = "";
 
         public ListWindow(string _s, string _dataType)
         {
@@ -40,15 +45,72 @@ namespace GalleryApp
             this.type = _dataType;
             labelList.Text = s;
             db = new Context();
+            InitializeFilterComboBox();
             LoadTable();
         }
-
+        private void InitializeFilterComboBox()
+        {
+            comboBoxFilterBy.Items.Clear();
+            comboBox1.Items.Clear();
+            switch (type)
+            {
+                case "Картины":
+                    comboBoxFilterBy.Items.AddRange(new string[] { "Название", "Год", "Статус" });
+                    comboBox1.Items.AddRange(new string[] { "Название", "Год", "Статус" });
+                    comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
+                    break;
+                case "Сотрудники":
+                    comboBoxFilterBy.Items.AddRange(new string[] { "ФИО", "Логин" });
+                    comboBox1.Items.AddRange(new string[] { "ФИО", "Логин" });
+                    comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
+                    break;
+                case "Должности":
+                    comboBoxFilterBy.Items.AddRange(new string[] { "Название" });
+                    comboBox1.Items.AddRange(new string[] { "Название" });
+                    comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
+                    break;
+                case "История":
+                    comboBoxFilterBy.Items.AddRange(new string[] { "Дата", "Откуда", "Куда" });
+                    comboBox1.Items.AddRange(new string[] { "Дата", "Откуда", "Куда" });
+                    comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
+                    break;
+                case "Выставки":
+                    comboBoxFilterBy.Items.AddRange(new string[] { "Название", "Город", "Улица" });
+                    comboBox1.Items.AddRange(new string[] { "Название", "Город", "Улица" });
+                    comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
+                    break;
+                case "Авторы":
+                    comboBoxFilterBy.Items.AddRange(new string[] { "ФИО", "Год рождения" });
+                    comboBox1.Items.AddRange(new string[] { "ФИО", "Год рождения" });
+                    comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
+                    break;
+                case "Жанры":
+                    comboBoxFilterBy.Items.AddRange(new string[] { "Название" });
+                    comboBox1.Items.AddRange(new string[] { "Название" });
+                    comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
+                    break;
+                default:
+                    comboBoxFilterBy.Items.Add("Название");
+                    comboBox1.Items.AddRange(new string[] { "Название"});
+                    comboBoxFilterBy.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
+                    break;
+            }
+        }
         public void updateContent(string _label, string _type)
         {
             this.s += _label;
             this.type = _type;
             this.Text = _label;
             this.labelList.Text = _label;
+            InitializeFilterComboBox();
             LoadTable();
         }
 
@@ -61,25 +123,25 @@ namespace GalleryApp
                 switch (type)
                 {
                     case "Картины":
-                        LoadPaintings();
+                        LoadPaintings(searchText, filterText);
                         break;
                     case "Сотрудники":
-                        LoadEmployees();
+                        LoadEmployees(searchText, filterText);
                         break;
                     case "Должности":
-                        LoadPositions();
+                        LoadPositions(searchText, filterText);
                         break;
                     case "История":
-                        LoadHistory();
+                        LoadHistory(searchText, filterText);
                         break;
                     case "Выставки":
-                        LoadLocation();
+                        LoadLocation(searchText, filterText);
                         break;
                     case "Авторы":
-                        LoadAuthors();
+                        LoadAuthors(searchText, filterText);
                         break;
                     case "Жанры":
-                        LoadGenres();
+                        LoadGenres(searchText, filterText);
                         break;
                 }
             }
@@ -90,61 +152,108 @@ namespace GalleryApp
             }
         }
 
-        private void LoadGenres()
+        private void LoadGenres(string searchText, string filterColumn)
         {
-            List<Genre> genres = db.Genres.ToList();
-            dataGridView1.DataSource = genres;
+            var query = db.Genres.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                if (filterColumn == "Название")
+                    query = query.Where(g => g.Name.Contains(searchText));
+            }
+            dataGridView1.DataSource = query.ToList();
         }
 
-        private void LoadAuthors()
+        private void LoadAuthors(string searchText, string filterColumn)
         {
-            List<Author> authors = db.Authors.ToList();
-            dataGridView1.DataSource = authors;
+            var query = db.Authors.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                if (filterColumn == "ФИО")
+                    query = query.Where(a => a.full_name.Contains(searchText));
+                else if (filterColumn == "Год рождения")
+                    query = query.Where(a => a.Year_of_birth.ToString().Contains(searchText));
+            }
+            dataGridView1.DataSource = query.ToList();
         }
 
-        private void LoadPaintings()
+        private void LoadPaintings(string searchText, string filterColumn)
         {
-            List<Painting> paintings = db.Paintings.ToList();
-            dataGridView1.DataSource = paintings;
+            var query = db.Paintings.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                if (filterColumn == "Название")
+                    query = query.Where(p => p.Title.Contains(searchText));
+                else if (filterColumn == "Год")
+                    query = query.Where(p => p.Year.ToString().Contains(searchText));
+                else if (filterColumn == "Статус")
+                    query = query.Where(p => p.StatusP.ToString().Contains(searchText));
+            }
+            dataGridView1.DataSource = query.ToList();
         }
 
-        private void LoadEmployees()
+        private void LoadEmployees(string searchText, string filterColumn)
         {
             using (Context c = new Context())
             {
-                var employees = c.Employees
-                    .Include("Move_history")
-                    .Select(u => new {
-                        u.Id,
-                        u.full_name,
-                        u.date_of_birth,
-                        u.login,
-                        u.password,
-                        u.Move_Histories
-                    }).ToList();
+                var query = c.Employees.Include("Move_history").AsQueryable();
+                if (!string.IsNullOrWhiteSpace(searchText))
+                {
+                    if (filterColumn == "ФИО")
+                        query = query.Where(e => e.full_name.Contains(searchText));
+                    else if (filterColumn == "Логин")
+                        query = query.Where(e => e.login.Contains(searchText));
+                }
+                var employees = query.Select(u => new {
+                    u.Id,
+                    u.full_name,
+                    u.date_of_birth,
+                    u.login,
+                    u.password,
+                    u.Move_Histories
+                }).ToList();
                 dataGridView1.DataSource = employees;
             }
         }
 
-        private void LoadPositions()
+        private void LoadPositions(string searchText, string filterColumn)
         {
             using (Context c = new Context())
             {
-                var positions = c.Posiitions.ToList();
-                dataGridView1.DataSource = positions;
+                var query = c.Posiitions.AsQueryable();
+                if (!string.IsNullOrWhiteSpace(searchText) && filterColumn == "Название")
+                    query = query.Where(p => p.Name.Contains(searchText));
+                dataGridView1.DataSource = query.ToList();
             }
         }
 
-        private void LoadHistory()
+        private void LoadHistory(string searchText, string filterColumn)
         {
-            List<Move_history> history = db.Move_Histories.ToList();
-            dataGridView1.DataSource = history;
+            var query = db.Move_Histories.Include(m => m.location_from).Include(m => m.location_to).AsQueryable();
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                if (filterColumn == "Дата")
+                    query = query.Where(m => m.date.ToString().Contains(searchText));
+                else if (filterColumn == "Откуда")
+                    query = query.Where(m => m.location_from.Name.Contains(searchText));
+                else if (filterColumn == "Куда")
+                    query = query.Where(m => m.location_to.Name.Contains(searchText));
+            }
+            dataGridView1.DataSource = query.ToList();
         }
 
-        private void LoadLocation()
+        private void LoadLocation(string searchText, string filterColumn)
         {
-            List<Location> locations = db.Locations.ToList();
-            dataGridView1.DataSource = locations;
+            var query = db.Locations.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                if (filterColumn == "Название")
+                    query = query.Where(l => l.Name.Contains(searchText));
+                else if (filterColumn == "Город")
+                    query = query.Where(l => l.City.Contains(searchText));
+                else if (filterColumn == "Улица")
+                    query = query.Where(l => l.Street_Name.Contains(searchText));
+            }
+            dataGridView1.DataSource = query.ToList();
         }
 
         private void LoadAccess()
@@ -295,37 +404,37 @@ namespace GalleryApp
                 case "Картины":
                     addPainting = new AddPainting();
                     addPainting.ShowDialog();
-                    LoadPaintings();
+                    LoadPaintings(searchText, filterText);
                     break;
                 case "Сотрудники":
                     addEmployee = new AddEmployee();
                     addEmployee.ShowDialog();
-                    LoadEmployees();
+                    LoadEmployees(searchText, filterText);
                     break;
                 case "Должности":
                     addPosition = new AddPosition();
                     addPosition.ShowDialog();
-                    LoadPositions();
+                    LoadPositions(searchText, filterText);
                     break;
                 case "История":
                     addHistory = new AddHistory();
                     addHistory.ShowDialog();
-                    LoadHistory();
+                    LoadHistory(searchText, filterText);
                     break;
                 case "Выставки":
                     addLocation = new AddLocation();
                     addLocation.ShowDialog();
-                    LoadLocation();
+                    LoadLocation(searchText, filterText);
                     break;                
                 case "Авторы":
                     addAuthor = new AddAuthor();
                     addAuthor.ShowDialog();
-                    LoadAuthors();
+                    LoadAuthors(searchText, filterText);
                     break;
                 case "Жанры":
                     addGenre = new AddGenre();
                     addGenre.ShowDialog();
-                    LoadGenres();
+                    LoadGenres(searchText, filterText);
                     break;
             }
         }
@@ -359,30 +468,80 @@ namespace GalleryApp
                 switch (type)
                 {
                     case "Картины":
-
+                        redactPainting = new RedactPainting(selected_id);
+                        redactPainting.ShowDialog();
+                        LoadPaintings(searchText, filterText);
                         break;
                     case "Сотрудники":
                         redactEmployee = new RedactEmployee(selected_id);
                         redactEmployee.ShowDialog();
-                        LoadEmployees();
+                        LoadEmployees(searchText, filterText);
                         break;
                     case "Должности":
 
                         break;
                     case "История":
-
+                        redactHistory = new RedactHistory(selected_id);
+                        redactHistory.ShowDialog();
+                        LoadHistory(searchText, filterText);
                         break;
                     case "Выставки":
 
                         break;
                     case "Авторы":
-
+                        redactAuthor = new RedactAuthor(selected_id);
+                        redactAuthor.ShowDialog();
+                        LoadAuthors(searchText, filterText);
                         break;
                     case "Жанры":
 
                         break;
                 }
             }
+        }
+
+        private void buttonClearSearch_Click(object sender, EventArgs e)
+        {
+            textBoxSearch.Text = "";
+            searchText = "";
+            LoadTable();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            searchText = textBoxSearch.Text;
+            filterText = comboBoxFilterBy.SelectedItem?.ToString() ?? "";
+            LoadTable();
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelFilter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxFilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -227,6 +227,7 @@
             this.Controls.Add(this.button1);
             this.Name = "RedactPainting";
             this.Text = "RedactPainting";
+            this.Load += new System.EventHandler(this.RedactPainting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);

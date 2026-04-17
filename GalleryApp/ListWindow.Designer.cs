@@ -38,10 +38,12 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonClearSearch = new System.Windows.Forms.Button();
             this.labelSearch = new System.Windows.Forms.Label();
-            this.labelFilter = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,14 +65,14 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(948, 458);
+            this.dataGridView1.Size = new System.Drawing.Size(1258, 591);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1013, 105);
+            this.button1.Location = new System.Drawing.Point(1354, 104);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(131, 37);
             this.button1.TabIndex = 2;
@@ -80,7 +82,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1013, 148);
+            this.button2.Location = new System.Drawing.Point(1354, 147);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 37);
             this.button2.TabIndex = 3;
@@ -90,7 +92,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1013, 191);
+            this.button3.Location = new System.Drawing.Point(1354, 190);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(131, 37);
             this.button3.TabIndex = 4;
@@ -110,7 +112,7 @@
             // 
             this.comboBoxFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFilterBy.FormattingEnabled = true;
-            this.comboBoxFilterBy.Location = new System.Drawing.Point(382, 66);
+            this.comboBoxFilterBy.Location = new System.Drawing.Point(396, 68);
             this.comboBoxFilterBy.Name = "comboBoxFilterBy";
             this.comboBoxFilterBy.Size = new System.Drawing.Size(120, 24);
             this.comboBoxFilterBy.TabIndex = 8;
@@ -118,7 +120,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(508, 67);
+            this.buttonSearch.Location = new System.Drawing.Point(522, 69);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(65, 25);
             this.buttonSearch.TabIndex = 9;
@@ -128,7 +130,7 @@
             // 
             // buttonClearSearch
             // 
-            this.buttonClearSearch.Location = new System.Drawing.Point(579, 67);
+            this.buttonClearSearch.Location = new System.Drawing.Point(593, 69);
             this.buttonClearSearch.Name = "buttonClearSearch";
             this.buttonClearSearch.Size = new System.Drawing.Size(69, 25);
             this.buttonClearSearch.TabIndex = 10;
@@ -146,19 +148,9 @@
             this.labelSearch.Text = "Поиск:";
             this.labelSearch.Click += new System.EventHandler(this.labelSearch_Click);
             // 
-            // labelFilter
-            // 
-            this.labelFilter.AutoSize = true;
-            this.labelFilter.Location = new System.Drawing.Point(307, 69);
-            this.labelFilter.Name = "labelFilter";
-            this.labelFilter.Size = new System.Drawing.Size(69, 16);
-            this.labelFilter.TabIndex = 7;
-            this.labelFilter.Text = "Поиск по:";
-            this.labelFilter.Click += new System.EventHandler(this.labelFilter_Click);
-            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(860, 66);
+            this.button4.Location = new System.Drawing.Point(1202, 70);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(91, 23);
             this.button4.TabIndex = 11;
@@ -169,7 +161,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(719, 67);
+            this.comboBox1.Location = new System.Drawing.Point(1061, 69);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(135, 24);
             this.comboBox1.TabIndex = 12;
@@ -178,25 +170,56 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(654, 71);
+            this.label1.Location = new System.Drawing.Point(767, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 16);
             this.label1.TabIndex = 13;
             this.label1.Text = "Фильтр:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(832, 68);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(135, 24);
+            this.comboBox2.TabIndex = 14;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(973, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 16);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "По столбцу:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(307, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 16);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "По столбцу:";
             // 
             // ListWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 589);
+            this.ClientSize = new System.Drawing.Size(1544, 708);
             this.ControlBox = false;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.buttonClearSearch);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.comboBoxFilterBy);
-            this.Controls.Add(this.labelFilter);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.labelSearch);
             this.Controls.Add(this.button3);
@@ -226,9 +249,11 @@
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonClearSearch;
         private System.Windows.Forms.Label labelSearch;
-        private System.Windows.Forms.Label labelFilter;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -83,10 +83,11 @@ namespace GalleryApp.RedactForms
             if (painting.Location != null)
                 comboBox3.SelectedItem = painting.Location;
 
-            foreach (Author author in checkedListBox1.Items)
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
             {
+                Author author = (Author)checkedListBox1.Items[i];
                 if (painting.Authors.Contains(author))
-                    checkedListBox1.SetItemChecked(checkedListBox1.Items.IndexOf(author), true);
+                    checkedListBox1.SetItemChecked(i, true);
             }
         }
 
@@ -146,6 +147,11 @@ namespace GalleryApp.RedactForms
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
+        }
+
+        private void RedactPainting_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

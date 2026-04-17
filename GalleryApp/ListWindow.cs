@@ -1,15 +1,17 @@
-﻿using GalleryApp.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Entity;
 using GalleryApp.AddForms;
+using GalleryApp.Classes;
 using GalleryApp.RedactForms;
 
 namespace GalleryApp
@@ -31,11 +33,17 @@ namespace GalleryApp
         private RedactPainting redactPainting;
         private RedactAuthor redactAuthor;
         private RedactHistory redactHistory;
+        private RedactGenre redactGenre;
+        private RedactPosition redactPosition;
+        private RedactLocation redactLocation;
 
         private int selectedId;
         private object selectedObject;
         private string searchText = "";
         private string filterText = "";
+        private string sortType = "";
+        private string sort = "Без сортировки";
+
 
         public ListWindow(string _s, string _dataType)
         {
@@ -47,6 +55,13 @@ namespace GalleryApp
             db = new Context();
             InitializeFilterComboBox();
             LoadTable();
+        }
+
+        private void InitializeSorting()
+        {
+            comboBox2.Items.Clear();
+            comboBox2.Items.AddRange(new string[] { "Без сортировки", "По возрастанию", "По убыванию" });
+            comboBox2.SelectedIndex = 0;
         }
         private void InitializeFilterComboBox()
         {
@@ -111,6 +126,11 @@ namespace GalleryApp
             this.Text = _label;
             this.labelList.Text = _label;
             InitializeFilterComboBox();
+
+            sort = "";
+            sortType = "Без сортировки";
+            comboBox2.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
             LoadTable();
         }
 
@@ -160,7 +180,100 @@ namespace GalleryApp
                 if (filterColumn == "Название")
                     query = query.Where(g => g.Name.Contains(searchText));
             }
-            dataGridView1.DataSource = query.ToList();
+
+            var list = query.ToList();
+            list = ApplySorting(list);
+            dataGridView1.DataSource = list;
+        }
+
+        private List<T> ApplySorting<T>(List<T> list)
+        {
+            if (sortType == "Без сортировки" || string.IsNullOrEmpty(sort))
+                return list;
+
+            if (sortType == "По возрастанию")
+            {
+                if (sort == "Название" && typeof(T) == typeof(Genre))
+                    return list.OrderBy(x => (x as Genre).Name).ToList();
+                if (sort == "Название" && typeof(T) == typeof(Position))
+                    return list.OrderBy(x => (x as Position).Name).ToList();
+                if (sort == "Название" && typeof(T) == typeof(Location))
+                    return list.OrderBy(x => (x as Location).Name).ToList();
+                if (sort == "ФИО" && typeof(T) == typeof(Author))
+                    return list.OrderBy(x => (x as Author).full_name).ToList();
+                if (sort == "Год рождения" && typeof(T) == typeof(Author))
+                    return list.OrderBy(x => (x as Author).Year_of_birth).ToList();
+                if (sort == "Название" && typeof(T) == typeof(Painting))
+                    return list.OrderBy(x => (x as Painting).Title).ToList();
+                if (sort == "Год" && typeof(T) == typeof(Painting))
+                    return list.OrderBy(x => (x as Painting).Year).ToList();
+                if (sort == "Статус" && typeof(T) == typeof(Painting))
+                    return list.OrderBy(x => (x as Painting).StatusP).ToList();
+                if (sort == "Дата" && typeof(T) == typeof(Move_history))
+                    return list.OrderBy(x => (x as Move_history).date).ToList();
+                if (sort == "Город" && typeof(T) == typeof(Location))
+                    return list.OrderBy(x => (x as Location).City).ToList();
+                if (sort == "Улица" && typeof(T) == typeof(Location))
+                    return list.OrderBy(x => (x as Location).Street_Name).ToList();
+            }
+            else if (sortType == "По убыванию")
+            {
+                if (sort == "Название" && typeof(T) == typeof(Genre))
+                    return list.OrderByDescending(x => (x as Genre).Name).ToList();
+                if (sort == "Название" && typeof(T) == typeof(Position))
+                    return list.OrderByDescending(x => (x as Position).Name).ToList();
+                if (sort == "Название" && typeof(T) == typeof(Location))
+                    return list.OrderByDescending(x => (x as Location).Name).ToList();
+                if (sort == "ФИО" && typeof(T) == typeof(Author))
+                    return list.OrderByDescending(x => (x as Author).full_name).ToList();
+                if (sort == "Год рождения" && typeof(T) == typeof(Author))
+                    return list.OrderByDescending(x => (x as Author).Year_of_birth).ToList();
+                if (sort == "Название" && typeof(T) == typeof(Painting))
+                    return list.OrderByDescending(x => (x as Painting).Title).ToList();
+                if (sort == "Год" && typeof(T) == typeof(Painting))
+                    return list.OrderByDescending(x => (x as Painting).Year).ToList();
+                if (sort == "Статус" && typeof(T) == typeof(Painting))
+                    return list.OrderByDescending(x => (x as Painting).StatusP).ToList();
+                if (sort == "Дата" && typeof(T) == typeof(Move_history))
+                    return list.OrderByDescending(x => (x as Move_history).date).ToList();
+                if (sort == "Город" && typeof(T) == typeof(Location))
+                    return list.OrderByDescending(x => (x as Location).City).ToList();
+                if (sort == "Улица" && typeof(T) == typeof(Location))
+                    return list.OrderByDescending(x => (x as Location).Street_Name).ToList();
+            }
+            return list;
+        }
+
+        private List<object> ApplySortingForEmployees(List<object> employees)
+        {
+            if (sortType == "Без сортировки" || string.IsNullOrEmpty(sort))
+                return employees;
+
+            if (employees.Count > 0)
+            {
+                var firstItem = employees[0];
+                var propInfo = firstItem.GetType().GetProperty(GetPropertyNameForEmployee());
+
+                if (propInfo != null)
+                {
+                    if (sortType == "По возрастанию")
+                        return employees.OrderBy(x => propInfo.GetValue(x, null)).ToList();
+                    else
+                        return employees.OrderByDescending(x => propInfo.GetValue(x, null)).ToList();
+                }
+            }
+
+            return employees;
+        }
+
+        private string GetPropertyNameForEmployee()
+        {
+            switch (sort)
+            {
+                case "ФИО": return "full_name";
+                case "Логин": return "login";
+                default: return "Id";
+            }
         }
 
         private void LoadAuthors(string searchText, string filterColumn)
@@ -173,7 +286,10 @@ namespace GalleryApp
                 else if (filterColumn == "Год рождения")
                     query = query.Where(a => a.Year_of_birth.ToString().Contains(searchText));
             }
-            dataGridView1.DataSource = query.ToList();
+
+            var list = query.ToList();
+            list = ApplySorting(list);
+            dataGridView1.DataSource = list;
         }
 
         private void LoadPaintings(string searchText, string filterColumn)
@@ -188,7 +304,9 @@ namespace GalleryApp
                 else if (filterColumn == "Статус")
                     query = query.Where(p => p.StatusP.ToString().Contains(searchText));
             }
-            dataGridView1.DataSource = query.ToList();
+            var list = query.ToList();
+            list = ApplySorting(list);
+            dataGridView1.DataSource = list;
         }
 
         private void LoadEmployees(string searchText, string filterColumn)
@@ -211,7 +329,9 @@ namespace GalleryApp
                     u.password,
                     u.Move_Histories
                 }).ToList();
-                dataGridView1.DataSource = employees;
+                var list = query.ToList();
+                list = ApplySorting(list);
+                dataGridView1.DataSource = list;
             }
         }
 
@@ -222,7 +342,9 @@ namespace GalleryApp
                 var query = c.Posiitions.AsQueryable();
                 if (!string.IsNullOrWhiteSpace(searchText) && filterColumn == "Название")
                     query = query.Where(p => p.Name.Contains(searchText));
-                dataGridView1.DataSource = query.ToList();
+                var list = query.ToList();
+                list = ApplySorting(list);
+                dataGridView1.DataSource = list;
             }
         }
 
@@ -238,7 +360,9 @@ namespace GalleryApp
                 else if (filterColumn == "Куда")
                     query = query.Where(m => m.location_to.Name.Contains(searchText));
             }
-            dataGridView1.DataSource = query.ToList();
+            var list = query.ToList();
+            list = ApplySorting(list);
+            dataGridView1.DataSource = list;
         }
 
         private void LoadLocation(string searchText, string filterColumn)
@@ -253,16 +377,9 @@ namespace GalleryApp
                 else if (filterColumn == "Улица")
                     query = query.Where(l => l.Street_Name.Contains(searchText));
             }
-            dataGridView1.DataSource = query.ToList();
-        }
-
-        private void LoadAccess()
-        {
-            using (Context c = new Context())
-            {
-                var access = c.Employees.ToList();
-                dataGridView1.DataSource = access;
-            }
+            var list = query.ToList();
+            list = ApplySorting(list);
+            dataGridView1.DataSource = list;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -478,7 +595,9 @@ namespace GalleryApp
                         LoadEmployees(searchText, filterText);
                         break;
                     case "Должности":
-
+                        redactPosition = new RedactPosition(selected_id); 
+                        redactPosition.ShowDialog();
+                        LoadPositions(searchText, filterText);
                         break;
                     case "История":
                         redactHistory = new RedactHistory(selected_id);
@@ -486,7 +605,9 @@ namespace GalleryApp
                         LoadHistory(searchText, filterText);
                         break;
                     case "Выставки":
-
+                        redactLocation = new RedactLocation(selected_id); 
+                        redactLocation.ShowDialog();
+                        LoadLocation(searchText, filterText);
                         break;
                     case "Авторы":
                         redactAuthor = new RedactAuthor(selected_id);
@@ -494,7 +615,9 @@ namespace GalleryApp
                         LoadAuthors(searchText, filterText);
                         break;
                     case "Жанры":
-
+                        redactGenre = new RedactGenre(selected_id); 
+                        redactGenre.ShowDialog();
+                        LoadGenres(searchText, filterText);
                         break;
                 }
             }
@@ -540,6 +663,22 @@ namespace GalleryApp
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            sort = comboBox2.SelectedItem?.ToString() ?? "Без сортировки";
+            LoadTable();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

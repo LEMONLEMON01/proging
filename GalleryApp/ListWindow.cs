@@ -279,18 +279,45 @@ namespace GalleryApp
 
         private void LoadAuthors(string searchText, string filterColumn)
         {
-            var query = db.Authors.AsQueryable();
-            if (!string.IsNullOrWhiteSpace(searchText))
+            using (Context c = new Context())
             {
-                if (filterColumn == "ФИО")
-                    query = query.Where(a => a.full_name.Contains(searchText));
-                else if (filterColumn == "Год рождения")
-                    query = query.Where(a => a.Year_of_birth.ToString().Contains(searchText));
-            }
+                var query = c.Authors.AsQueryable();
 
-            var list = query.ToList();
-            list = ApplySorting(list);
-            dataGridView1.DataSource = list;
+                if (!string.IsNullOrWhiteSpace(searchText))
+                {
+                    if (filterColumn == "ФИО")
+                        query = query.Where(a => a.full_name.Contains(searchText));
+                    else if (filterColumn == "Год рождения")
+                        query = query.Where(a => a.Year_of_birth.ToString().Contains(searchText));
+                }
+
+                var authors = query.ToList();
+
+                var displayList = authors.Select(a => new
+                {
+                    Id = ((Person)a).Id,
+                    a.full_name,
+                    a.Year_of_birth,
+                    a.date_of_birth
+                }).ToList();
+
+                if (sortType == "По возрастанию")
+                {
+                    if (sort == "ФИО")
+                        displayList = displayList.OrderBy(x => x.full_name).ToList();
+                    else if (sort == "Год рождения")
+                        displayList = displayList.OrderBy(x => x.Year_of_birth).ToList();
+                }
+                else if (sortType == "По убыванию")
+                {
+                    if (sort == "ФИО")
+                        displayList = displayList.OrderByDescending(x => x.full_name).ToList();
+                    else if (sort == "Год рождения")
+                        displayList = displayList.OrderByDescending(x => x.Year_of_birth).ToList();
+                }
+
+                dataGridView1.DataSource = displayList;
+            }
         }
 
         private void LoadPaintings(string searchText, string filterColumn)
@@ -314,7 +341,8 @@ namespace GalleryApp
         {
             using (Context c = new Context())
             {
-                var query = c.Employees.Include("Move_Histories").AsQueryable();
+                var query = c.Employees.Include(e => e.Position).AsQueryable();
+
                 if (!string.IsNullOrWhiteSpace(searchText))
                 {
                     if (filterColumn == "ФИО")
@@ -322,17 +350,37 @@ namespace GalleryApp
                     else if (filterColumn == "Логин")
                         query = query.Where(e => e.login.Contains(searchText));
                 }
-                var employees = query.Select(u => new {
-                    u.Id,
-                    u.full_name,
-                    u.date_of_birth,
-                    u.login,
-                    u.password,
-                    u.Move_Histories
+
+                var employees = query.ToList();
+
+                var displayList = employees.Select(e => new
+                {
+                    Id = ((Person)e).Id, 
+
+
+                    e.full_name,
+                    e.date_of_birth,
+                    e.login,
+                    Position = e.Position != null ? e.Position.Name : "",
+                    Accesses = e.Accesses
                 }).ToList();
-                var list = query.ToList();
-                list = ApplySorting(list);
-                dataGridView1.DataSource = list;
+
+                if (sortType == "По возрастанию")
+                {
+                    if (sort == "ФИО")
+                        displayList = displayList.OrderBy(x => x.full_name).ToList();
+                    else if (sort == "Логин")
+                        displayList = displayList.OrderBy(x => x.login).ToList();
+                }
+                else if (sortType == "По убыванию")
+                {
+                    if (sort == "ФИО")
+                        displayList = displayList.OrderByDescending(x => x.full_name).ToList();
+                    else if (sort == "Логин")
+                        displayList = displayList.OrderByDescending(x => x.login).ToList();
+                }
+
+                dataGridView1.DataSource = displayList;
             }
         }
 
@@ -368,19 +416,52 @@ namespace GalleryApp
 
         private void LoadLocation(string searchText, string filterColumn)
         {
-            var query = db.Locations.AsQueryable();
-            if (!string.IsNullOrWhiteSpace(searchText))
+            using (Context c = new Context())
             {
-                if (filterColumn == "Название")
-                    query = query.Where(l => l.Name.Contains(searchText));
-                else if (filterColumn == "Город")
-                    query = query.Where(l => l.City.Contains(searchText));
-                else if (filterColumn == "Улица")
-                    query = query.Where(l => l.Street_Name.Contains(searchText));
+                var query = c.Locations.AsQueryable();
+
+                if (!string.IsNullOrWhiteSpace(searchText))
+                {
+                    if (filterColumn == "Название")
+                        query = query.Where(l => l.Name.Contains(searchText));
+                    else if (filterColumn == "Город")
+                        query = query.Where(l => l.City.Contains(searchText));
+                    else if (filterColumn == "Улица")
+                        query = query.Where(l => l.Street_Name.Contains(searchText));
+                }
+
+                var locations = query.ToList();
+
+                var displayList = locations.Select(l => new
+                {
+                    Id = ((Exhibition)l).Id,
+                    l.Name,
+                    l.City,
+                    l.Street_Name,
+                    l.House_Number
+                }).ToList();
+
+                if (sortType == "По возрастанию")
+                {
+                    if (sort == "Название")
+                        displayList = displayList.OrderBy(x => x.Name).ToList();
+                    else if (sort == "Город")
+                        displayList = displayList.OrderBy(x => x.City).ToList();
+                    else if (sort == "Улица")
+                        displayList = displayList.OrderBy(x => x.Street_Name).ToList();
+                }
+                else if (sortType == "По убыванию")
+                {
+                    if (sort == "Название")
+                        displayList = displayList.OrderByDescending(x => x.Name).ToList();
+                    else if (sort == "Город")
+                        displayList = displayList.OrderByDescending(x => x.City).ToList();
+                    else if (sort == "Улица")
+                        displayList = displayList.OrderByDescending(x => x.Street_Name).ToList();
+                }
+
+                dataGridView1.DataSource = displayList;
             }
-            var list = query.ToList();
-            list = ApplySorting(list);
-            dataGridView1.DataSource = list;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -660,7 +741,9 @@ namespace GalleryApp
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            sort = comboBox1.SelectedItem?.ToString() ?? "Без сортировки";
+            sortType = comboBox2.SelectedItem?.ToString() ?? "Без сортировки";
+            LoadTable();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

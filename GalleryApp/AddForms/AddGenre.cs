@@ -44,5 +44,9 @@ namespace GalleryApp.AddForms
 
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

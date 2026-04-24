@@ -28,7 +28,7 @@ namespace GalleryApp.RedactForms
             var position = db.Posiitions.Find(positionID);
             if (position == null) return;
 
-            textBox1.Text = Name;
+            textBox1.Text = position.Name;
 
         }
         private void SaveData()
@@ -78,14 +78,16 @@ namespace GalleryApp.RedactForms
                 this.Close();
             }
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            CancelChanges();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             SaveData();
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            CancelChanges();
+
         }
     }
 }

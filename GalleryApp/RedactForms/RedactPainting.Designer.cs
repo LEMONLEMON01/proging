@@ -58,6 +58,7 @@
             this.button2.TabIndex = 30;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
@@ -65,8 +66,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 23);
             this.button1.TabIndex = 29;
-            this.button1.Text = "Добавить";
+            this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label8
             // 
@@ -143,6 +145,11 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(151, 124);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            2100,
+            0,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(224, 22);
             this.numericUpDown2.TabIndex = 45;
@@ -191,6 +198,11 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(151, 83);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            -159383552,
+            46653770,
+            5421,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(224, 22);
             this.numericUpDown1.TabIndex = 39;

@@ -91,7 +91,7 @@ namespace GalleryApp.RedactForms
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text) ||
                 numericUpDown1.Value <= 0 ||
@@ -138,7 +138,7 @@ namespace GalleryApp.RedactForms
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Отменить изменения и закрыть форму?", "Подтверждение",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -150,6 +150,16 @@ namespace GalleryApp.RedactForms
         }
 
         private void RedactPainting_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

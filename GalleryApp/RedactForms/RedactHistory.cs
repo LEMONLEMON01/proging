@@ -81,14 +81,12 @@ namespace GalleryApp.RedactForms
             if (history.location_to != null)
                 comboBox2.SelectedItem = history.location_to;
 
-            // Mark checked paintings
             foreach (Painting painting in checkedListBox1.Items)
             {
                 if (history.paintings.Contains(painting))
                     checkedListBox1.SetItemChecked(checkedListBox1.Items.IndexOf(painting), true);
             }
 
-            // Mark checked employees
             foreach (Employee emp in checkedListBox2.Items)
             {
                 if (history.employees.Contains(emp))

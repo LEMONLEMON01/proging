@@ -327,7 +327,12 @@ namespace GalleryApp
         {
             using (Context context = new Context())
             {
-                var query = context.Paintings.AsQueryable();
+                var query = context.Paintings
+                    .Include(p => p.Location)
+                    .Include(p => p.Genres)
+                    .Include(p => p.Authors)
+                    .AsQueryable();
+
                 if (!string.IsNullOrWhiteSpace(searchText))
                 {
                     if (filterColumn == "Название")
@@ -337,9 +342,41 @@ namespace GalleryApp
                     else if (filterColumn == "Статус")
                         query = query.Where(p => p.StatusP.ToString().Contains(searchText));
                 }
-                var list = query.ToList();
-                list = ApplySorting(list);
-                dataGridView1.DataSource = list;
+
+                var paintings = query.ToList();
+
+                var displayList = paintings.Select(p => new
+                {
+                    p.Id,
+                    p.Title,
+                    p.Year,
+                    p.Cost,
+                    Status = p.StatusP.ToString(),
+                    Location = p.Location != null ? p.Location.Name : "No Location",
+                    Genres = string.Join(", ", p.Genres.Select(g => g.Name)),
+                    Authors = string.Join(", ", p.Authors.Select(a => a.full_name))
+                }).ToList();
+
+                if (sortType == "По возрастанию")
+                {
+                    if (sort == "Название")
+                        displayList = displayList.OrderBy(x => x.Title).ToList();
+                    else if (sort == "Год")
+                        displayList = displayList.OrderBy(x => x.Year).ToList();
+                    else if (sort == "Статус")
+                        displayList = displayList.OrderBy(x => x.Status).ToList();
+                }
+                else if (sortType == "По убыванию")
+                {
+                    if (sort == "Название")
+                        displayList = displayList.OrderByDescending(x => x.Title).ToList();
+                    else if (sort == "Год")
+                        displayList = displayList.OrderByDescending(x => x.Year).ToList();
+                    else if (sort == "Статус")
+                        displayList = displayList.OrderByDescending(x => x.Status).ToList();
+                }
+
+                dataGridView1.DataSource = displayList;
             }
         }
 

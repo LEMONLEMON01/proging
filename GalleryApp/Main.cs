@@ -204,18 +204,17 @@ namespace GalleryApp
 
             table.Columns.Add("Id", typeof(int));
             table.Columns.Add("Название картины", typeof(string));
-            table.Columns.Add("Место проведения выставки", typeof(Location));
+            table.Columns.Add("Место проведения выставки", typeof(string));
 
             using (var context = new Context())
             {
                 var paintingsOnExhibition = from p in context.Paintings
-                                            join e in context.Exhibitions on p.ExhibitionId equals e.Id
                                             where p.StatusP == StatusP.exhibition
                                             select new
                                             {
                                                 p.Id,
                                                 p.Title,
-                                                e.Location,
+                                                LocationName = p.Location.Name
                                             };
 
                 foreach (var painting in paintingsOnExhibition)
@@ -223,7 +222,7 @@ namespace GalleryApp
                     table.Rows.Add(
                         painting.Id,
                         painting.Title,
-                        painting.Location,
+                        painting.LocationName
                     );
                 }
             }

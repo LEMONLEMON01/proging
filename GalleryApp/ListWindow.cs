@@ -408,6 +408,7 @@ namespace GalleryApp
             using (Context context = new Context())
             {
                 var query = context.Move_Histories.Include(m => m.location_from).Include(m => m.location_to).AsQueryable();
+
                 if (!string.IsNullOrWhiteSpace(searchText))
                 {
                     if (filterColumn == "Дата")
@@ -417,9 +418,38 @@ namespace GalleryApp
                     else if (filterColumn == "Куда")
                         query = query.Where(m => m.location_to.Name.Contains(searchText));
                 }
+
                 var list = query.ToList();
-                list = ApplySorting(list);
-                dataGridView1.DataSource = list;
+                var displayList = list.Select(m => new
+                {
+                    m.Id,
+                    Date = m.date,
+                    From = m.location_from != null ? m.location_from.Name : "Не указано",
+                    To = m.location_to != null ? m.location_to.Name : "Не указано",
+                     EmployeesCount = m.employees?.Count ?? 0,
+                     PaintingsCount = m.paintings?.Count ?? 0
+                }).ToList();
+
+                if (sortType == "По возрастанию")
+                {
+                    if (sort == "Дата")
+                        displayList = displayList.OrderBy(x => x.Date).ToList();
+                    else if (sort == "Откуда")
+                        displayList = displayList.OrderBy(x => x.From).ToList();
+                    else if (sort == "Куда")
+                        displayList = displayList.OrderBy(x => x.To).ToList();
+                }
+                else if (sortType == "По убыванию")
+                {
+                    if (sort == "Дата")
+                        displayList = displayList.OrderByDescending(x => x.Date).ToList();
+                    else if (sort == "Откуда")
+                        displayList = displayList.OrderByDescending(x => x.From).ToList();
+                    else if (sort == "Куда")
+                        displayList = displayList.OrderByDescending(x => x.To).ToList();
+                }
+
+                dataGridView1.DataSource = displayList;
             }
         }
 

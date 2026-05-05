@@ -19,6 +19,7 @@ namespace GalleryApp.Classes
         [Range(0, 2100)]
         public int Year_of_death { get; set; }
         public virtual List<Person> Person { get; set; } = new List<Person>();
+        public virtual List<Painting> Painting { get; set; } = new List<Painting>();
 
     }
 }

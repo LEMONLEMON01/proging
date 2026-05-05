@@ -175,6 +175,7 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(224, 89);
             this.checkedListBox1.TabIndex = 26;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -243,6 +244,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddPainting";
             this.Text = "AddPainting";
+            this.Load += new System.EventHandler(this.AddPainting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -19,32 +19,6 @@
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Authors", t => t.Author_Id)
                 .Index(t => t.Author_Id);
-            
-            CreateTable(
-                "dbo.Move_histories",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        date = c.DateTime(nullable: false),
-                        location_from_Id = c.Int(),
-                        location_to_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Locations", t => t.location_from_Id)
-                .ForeignKey("dbo.Locations", t => t.location_to_Id)
-                .Index(t => t.location_from_Id)
-                .Index(t => t.location_to_Id);
-            
-            CreateTable(
-                "dbo.Exhibitions",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Street_Name = c.String(),
-                        House_Number = c.Int(nullable: false),
-                        City = c.String(maxLength: 250),
-                    })
-                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Painting",
@@ -74,6 +48,32 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Exhibitions",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Street_Name = c.String(),
+                        House_Number = c.Int(nullable: false),
+                        City = c.String(maxLength: 250),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Move_histories",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        date = c.DateTime(nullable: false),
+                        location_from_Id = c.Int(),
+                        location_to_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Locations", t => t.location_from_Id)
+                .ForeignKey("dbo.Locations", t => t.location_to_Id)
+                .Index(t => t.location_from_Id)
+                .Index(t => t.location_to_Id);
+            
+            CreateTable(
                 "dbo.Positions",
                 c => new
                     {
@@ -83,17 +83,17 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Move_historyEmployee",
+                "dbo.PaintingAuthors",
                 c => new
                     {
-                        Move_history_Id = c.Int(nullable: false),
-                        Employee_Id = c.Int(nullable: false),
+                        Painting_Id = c.Int(nullable: false),
+                        Author_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.Move_history_Id, t.Employee_Id })
-                .ForeignKey("dbo.Move_histories", t => t.Move_history_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Employees", t => t.Employee_Id, cascadeDelete: true)
-                .Index(t => t.Move_history_Id)
-                .Index(t => t.Employee_Id);
+                .PrimaryKey(t => new { t.Painting_Id, t.Author_Id })
+                .ForeignKey("dbo.Painting", t => t.Painting_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Authors", t => t.Author_Id, cascadeDelete: true)
+                .Index(t => t.Painting_Id)
+                .Index(t => t.Author_Id);
             
             CreateTable(
                 "dbo.GenrePaintings",
@@ -109,19 +109,29 @@
                 .Index(t => t.Painting_Id);
             
             CreateTable(
+                "dbo.Move_historyEmployee",
+                c => new
+                    {
+                        Move_history_Id = c.Int(nullable: false),
+                        Employee_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Move_history_Id, t.Employee_Id })
+                .ForeignKey("dbo.Move_histories", t => t.Move_history_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Employees", t => t.Employee_Id, cascadeDelete: true)
+                .Index(t => t.Move_history_Id)
+                .Index(t => t.Employee_Id);
+            
+            CreateTable(
                 "dbo.Authors",
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        Painting_Id = c.Int(),
                         Year_of_birth = c.Int(nullable: false),
                         Year_of_death = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.People", t => t.Id)
-                .ForeignKey("dbo.Painting", t => t.Painting_Id)
-                .Index(t => t.Id)
-                .Index(t => t.Painting_Id);
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Employees",
@@ -157,41 +167,44 @@
             DropForeignKey("dbo.Locations", "Id", "dbo.Exhibitions");
             DropForeignKey("dbo.Employees", "Position_Id", "dbo.Positions");
             DropForeignKey("dbo.Employees", "Id", "dbo.People");
-            DropForeignKey("dbo.Authors", "Painting_Id", "dbo.Painting");
             DropForeignKey("dbo.Authors", "Id", "dbo.People");
             DropForeignKey("dbo.People", "Author_Id", "dbo.Authors");
             DropForeignKey("dbo.Painting", "Move_history_Id", "dbo.Move_histories");
             DropForeignKey("dbo.Move_histories", "location_to_Id", "dbo.Locations");
             DropForeignKey("dbo.Move_histories", "location_from_Id", "dbo.Locations");
+            DropForeignKey("dbo.Move_historyEmployee", "Employee_Id", "dbo.Employees");
+            DropForeignKey("dbo.Move_historyEmployee", "Move_history_Id", "dbo.Move_histories");
             DropForeignKey("dbo.Painting", "Location_Id", "dbo.Locations");
             DropForeignKey("dbo.GenrePaintings", "Painting_Id", "dbo.Painting");
             DropForeignKey("dbo.GenrePaintings", "Genre_Id", "dbo.Genres");
-            DropForeignKey("dbo.Move_historyEmployee", "Employee_Id", "dbo.Employees");
-            DropForeignKey("dbo.Move_historyEmployee", "Move_history_Id", "dbo.Move_histories");
+            DropForeignKey("dbo.PaintingAuthors", "Author_Id", "dbo.Authors");
+            DropForeignKey("dbo.PaintingAuthors", "Painting_Id", "dbo.Painting");
             DropIndex("dbo.Locations", new[] { "Id" });
             DropIndex("dbo.Employees", new[] { "Position_Id" });
             DropIndex("dbo.Employees", new[] { "Id" });
-            DropIndex("dbo.Authors", new[] { "Painting_Id" });
             DropIndex("dbo.Authors", new[] { "Id" });
-            DropIndex("dbo.GenrePaintings", new[] { "Painting_Id" });
-            DropIndex("dbo.GenrePaintings", new[] { "Genre_Id" });
             DropIndex("dbo.Move_historyEmployee", new[] { "Employee_Id" });
             DropIndex("dbo.Move_historyEmployee", new[] { "Move_history_Id" });
-            DropIndex("dbo.Painting", new[] { "Move_history_Id" });
-            DropIndex("dbo.Painting", new[] { "Location_Id" });
+            DropIndex("dbo.GenrePaintings", new[] { "Painting_Id" });
+            DropIndex("dbo.GenrePaintings", new[] { "Genre_Id" });
+            DropIndex("dbo.PaintingAuthors", new[] { "Author_Id" });
+            DropIndex("dbo.PaintingAuthors", new[] { "Painting_Id" });
             DropIndex("dbo.Move_histories", new[] { "location_to_Id" });
             DropIndex("dbo.Move_histories", new[] { "location_from_Id" });
+            DropIndex("dbo.Painting", new[] { "Move_history_Id" });
+            DropIndex("dbo.Painting", new[] { "Location_Id" });
             DropIndex("dbo.People", new[] { "Author_Id" });
             DropTable("dbo.Locations");
             DropTable("dbo.Employees");
             DropTable("dbo.Authors");
-            DropTable("dbo.GenrePaintings");
             DropTable("dbo.Move_historyEmployee");
+            DropTable("dbo.GenrePaintings");
+            DropTable("dbo.PaintingAuthors");
             DropTable("dbo.Positions");
+            DropTable("dbo.Move_histories");
+            DropTable("dbo.Exhibitions");
             DropTable("dbo.Genres");
             DropTable("dbo.Painting");
-            DropTable("dbo.Exhibitions");
-            DropTable("dbo.Move_histories");
             DropTable("dbo.People");
         }
     }

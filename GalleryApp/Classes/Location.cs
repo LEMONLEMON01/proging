@@ -15,7 +15,6 @@ namespace GalleryApp.Classes
         [MaxLength(250)]
         public string Name { get; set; }
         public virtual List<Painting> Paintings { get; set; } = new List<Painting>();
-
         public override string ToString()
         {
             return $"{Name}";

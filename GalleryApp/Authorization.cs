@@ -91,6 +91,8 @@ namespace GalleryApp
 
             if (employee != null)
             {
+                AppSession.CurrentEmployee = employee;
+
                 Hide();
                 Main main = new Main();
                 main.ShowDialog();

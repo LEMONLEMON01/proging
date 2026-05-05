@@ -54,9 +54,31 @@ namespace GalleryApp
             labelList.Text = s;
             db = new Context();
             InitializeFilterComboBox();
+            UpdateButtonsByAccess();
             LoadTable();
         }
+        private bool HasAccess(Access requiredAccess)
+        {
+            if (AppSession.CurrentEmployee == null)
+                return false;
 
+            if (string.IsNullOrWhiteSpace(AppSession.CurrentEmployee.Accesses))
+                return false;
+
+            var accesses = AppSession.CurrentEmployee.Accesses
+                .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(s => s.Trim())
+                .ToList();
+
+            return accesses.Contains(requiredAccess.ToString());
+        }
+
+        private void UpdateButtonsByAccess()
+        {
+            button1.Enabled = HasAccess(Access.Add);
+            button3.Enabled = HasAccess(Access.Change);
+            button2.Enabled = HasAccess(Access.Delete);
+        }
         private void InitializeSorting()
         {
             comboBox2.Items.Clear();
@@ -540,46 +562,6 @@ namespace GalleryApp
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (selectedId != -1)
-            {
-                DialogResult result = MessageBox.Show(
-                    $"Вы уверены, что хотите удалить запись?",
-                    "Подтверждение удаления",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    try
-                    {
-                        using (Context c = new Context())
-                        {
-                            bool deleteSuccess = DeleteObjectById(c, selectedId);
-                            if (deleteSuccess)
-                            {
-                                c.SaveChanges();
-                                MessageBox.Show("Запись успешно удалена!", "Успех",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                LoadTable();
-                                selectedId = -1;
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Ошибка при удалении: {ex.Message}", "Ошибка",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Пожалуйста, выберите запись для удаления.", "Внимание",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
 
         private bool DeleteObjectById(Context context, int id)
         {
@@ -592,7 +574,6 @@ namespace GalleryApp
                         .FirstOrDefault(p => p.Id == id);
                     if (painting != null)
                     {
-                        // Очищаем связи многие-ко-многим перед удалением
                         painting.Genres.Clear();
                         painting.Authors.Clear();
                         context.Paintings.Remove(painting);
@@ -683,8 +664,33 @@ namespace GalleryApp
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void ListWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+
+        private void button1_Click(object sender, EventArgs e)   
+        {
+            if (!HasAccess(Access.Add))
+            {
+                MessageBox.Show("У вас нет прав на добавление.", "Доступ запрещён",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             switch (type)
             {
                 case "Картины":
@@ -725,23 +731,61 @@ namespace GalleryApp
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button2_Click(object sender, EventArgs e)   
         {
+            if (!HasAccess(Access.Delete))
+            {
+                MessageBox.Show("У вас нет прав на удаление.", "Доступ запрещён",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (selectedId != -1)
+            {
+                DialogResult result = MessageBox.Show(
+                    $"Вы уверены, что хотите удалить запись?",
+                    "Подтверждение удаления",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        using (Context c = new Context())
+                        {
+                            bool deleteSuccess = DeleteObjectById(c, selectedId);
+                            if (deleteSuccess)
+                            {
+                                c.SaveChanges();
+                                MessageBox.Show("Запись успешно удалена!", "Успех",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadTable();
+                                selectedId = -1;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при удалении: {ex.Message}", "Ошибка",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите запись для удаления.", "Внимание",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void ListWindow_Load(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)   
         {
-
-        }
-
-        private void labelList_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
+            if (!HasAccess(Access.Change))
+            {
+                MessageBox.Show("У вас нет прав на редактирование.", "Доступ запрещён",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.IsNewRow)
             {
                 MessageBox.Show("Пожалуйста, выберите запись для редактирования.", "Внимание",
@@ -750,7 +794,6 @@ namespace GalleryApp
             else
             {
                 int selected_id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
-
                 switch (type)
                 {
                     case "Картины":
@@ -791,6 +834,7 @@ namespace GalleryApp
                 }
             }
         }
+
 
         private void buttonClearSearch_Click(object sender, EventArgs e)
         {

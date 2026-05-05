@@ -132,6 +132,7 @@
     <Compile Include="AddForms\AddPosition.Designer.cs">
       <DependentUpon>AddPosition.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppSession.cs" />
     <Compile Include="Authorization.cs">
       <SubType>Form</SubType>
     </Compile>

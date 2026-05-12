@@ -1,13 +1,8 @@
-﻿using GalleryApp.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using GalleryApp.Classes;
 
 namespace GalleryApp.AddForms
 {
@@ -20,7 +15,17 @@ namespace GalleryApp.AddForms
             db = new Context();
             checkedListBox1.Items.AddRange(Enum.GetNames(typeof(Access)));
 
-            LoadPositions();
+            try
+            {
+                LoadPositions();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -30,26 +35,6 @@ namespace GalleryApp.AddForms
             comboBox1.DisplayMember = "Name";
             comboBox1.ValueMember = "Id";
             comboBox1.DataSource = positions;
-        }
-
-        private void AddEmployee_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -63,7 +48,18 @@ namespace GalleryApp.AddForms
                     break;
                 }
             }
-            if (textBox1 != null && textBox2 != null && textBox3 != null && comboBox1.SelectedItem != null && hasAccessSelected)
+
+            if (string.IsNullOrWhiteSpace(textBox1.Text) ||
+                string.IsNullOrWhiteSpace(textBox2.Text) ||
+                string.IsNullOrWhiteSpace(textBox3.Text) ||
+                comboBox1.SelectedItem == null ||
+                !hasAccessSelected)
+            {
+                MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
             {
                 Employee employee = new Employee();
                 employee.full_name = textBox1.Text.Trim();
@@ -87,32 +83,19 @@ namespace GalleryApp.AddForms
                 db.SaveChanges();
                 this.Close();
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void button2_Click(object sender, EventArgs e) => this.Close();
+        private void AddEmployee_Load(object sender, EventArgs e) { }
+        private void label4_Click(object sender, EventArgs e) { }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void label6_Click(object sender, EventArgs e) { }
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) { }
     }
 }

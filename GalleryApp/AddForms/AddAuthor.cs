@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GalleryApp.Classes;
 
@@ -18,7 +11,7 @@ namespace GalleryApp.AddForms
         {
             InitializeComponent();
             db = new Context();
-            numericUpDown1.Maximum = 2100; 
+            numericUpDown1.Maximum = 2100;
             numericUpDown2.Maximum = 2100;
         }
 
@@ -30,28 +23,27 @@ namespace GalleryApp.AddForms
                 return;
             }
 
-            Author author = new Author
+            try
             {
-                full_name = textBox1.Text.Trim(),
-                Year_of_birth = (int)numericUpDown1.Value,
-                Year_of_death = (int)numericUpDown2.Value,
-                date_of_birth = new DateTime((int)numericUpDown1.Value, 1, 1)
-            };
+                Author author = new Author
+                {
+                    full_name = textBox1.Text.Trim(),
+                    Year_of_birth = (int)numericUpDown1.Value,
+                    Year_of_death = (int)numericUpDown2.Value,
+                    date_of_birth = new DateTime((int)numericUpDown1.Value, 1, 1)
+                };
 
-            db.Authors.Add(author);
-            db.SaveChanges();
-            this.Close();
+                db.Authors.Add(author);
+                db.SaveChanges();
+                this.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-            this.Close();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void button2_Click(object sender, EventArgs e) => this.Close();
+        private void label4_Click(object sender, EventArgs e) { }
     }
 }

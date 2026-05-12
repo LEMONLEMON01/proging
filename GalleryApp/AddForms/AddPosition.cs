@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GalleryApp.Classes;
 
@@ -30,19 +23,23 @@ namespace GalleryApp.AddForms
                 return;
             }
 
-            Position position = new Position
+            try
             {
-                Name = textBox1.Text.Trim()
-            };
+                Position position = new Position
+                {
+                    Name = textBox1.Text.Trim()
+                };
 
-            db.Posiitions.Add(position);
-            db.SaveChanges();
-            Close();
+                db.Posiitions.Add(position);
+                db.SaveChanges();
+                Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void button2_Click(object sender, EventArgs e) => Close();
     }
 }

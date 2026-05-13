@@ -28,10 +28,19 @@ namespace GalleryApp.RedactForms
 
         public void LoadPositions()
         {
-            var positions = db.Posiitions.ToList();
-            comboBox1.DisplayMember = "Name";
-            comboBox1.ValueMember = "Id";
-            comboBox1.DataSource = positions;
+            try
+            {
+                var positions = db.Posiitions.ToList();
+                comboBox1.DisplayMember = "Name";
+                comboBox1.ValueMember = "Id";
+                comboBox1.DataSource = positions;
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных при загрузке должностей!", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
+
         }
 
         private void GetData(Context db)
@@ -44,14 +53,12 @@ namespace GalleryApp.RedactForms
             textBox3.Text = employee.password;
             dateTimePicker1.Value = employee.date_of_birth;
 
-            var positions = db.Posiitions.ToList();
-            comboBox1.DisplayMember = "Name";
-            comboBox1.DataSource = positions;
+            LoadPositions();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
             if (employee.Position != null)
             {
-                comboBox1.SelectedItem = positions.FirstOrDefault(p => p.Name == employee.Position.Name);
+                comboBox1.SelectedItem = comboBox1.Items.Cast<Position>().FirstOrDefault(p => p.Name == employee.Position.Name);
             }
 
             if (!string.IsNullOrEmpty(employee.Accesses))
@@ -132,6 +139,14 @@ namespace GalleryApp.RedactForms
                 }
                 employee.Accesses = string.Join(",", selectedAccesses);
 
+                var existingEmployee = db.Employees.FirstOrDefault(e => e.login == textBox2.Text.Trim() && e.Id != employeeID);
+
+                if (existingEmployee != null)
+                {
+                    MessageBox.Show("Сотрудник с таким логином уже существует!", "Ошибка",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 db.SaveChanges();
 
                 MessageBox.Show("Данные успешно сохранены!", "Успех",
@@ -182,6 +197,11 @@ namespace GalleryApp.RedactForms
         private void button2_Click(object sender, EventArgs e)
         {
             CancelChanges();
+        }
+
+        private void RedactEmployee_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

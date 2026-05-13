@@ -186,6 +186,7 @@
             this.Controls.Add(this.label1);
             this.Name = "RedactEmployee";
             this.Text = "RedactEmployee";
+            this.Load += new System.EventHandler(this.RedactEmployee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

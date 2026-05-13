@@ -149,6 +149,7 @@
             this.Controls.Add(this.label1);
             this.Name = "RedactHistory";
             this.Text = "RedactHistory";
+            this.Load += new System.EventHandler(this.RedactHistory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

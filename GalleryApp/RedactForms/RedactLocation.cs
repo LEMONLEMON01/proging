@@ -18,9 +18,19 @@ namespace GalleryApp.RedactForms
         public RedactLocation(int _id)
         {
             InitializeComponent();
-            locationID = _id;
-            db = new Context();
-            GetData(db);
+            try
+            {
+                locationID = _id;
+                db = new Context();
+                GetData(db);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
         }
         private void GetData(Context db)
         {
@@ -118,6 +128,11 @@ namespace GalleryApp.RedactForms
         private void button2_Click_1(object sender, EventArgs e)
         {
             CancelChanges();
+
+        }
+
+        private void RedactLocation_Load(object sender, EventArgs e)
+        {
 
         }
     }

@@ -20,12 +20,23 @@ namespace GalleryApp.RedactForms
         public RedactHistory(int id)
         {
             InitializeComponent();
-            db = new Context();
-            historyId = id;
-            LoadLocations();
-            LoadPaintings();
-            LoadEmployees();
-            LoadHistoryData();
+            try
+            {
+                db = new Context();
+                historyId = id;
+                LoadLocations();
+                LoadPaintings();
+                LoadEmployees();
+                LoadHistoryData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+
         }
 
         private void LoadLocations()
@@ -121,12 +132,10 @@ namespace GalleryApp.RedactForms
             history.location_from = (Location)comboBox1.SelectedItem;
             history.location_to = (Location)comboBox2.SelectedItem;
 
-            // Update paintings collection
             history.paintings.Clear();
             foreach (Painting painting in checkedListBox1.CheckedItems)
                 history.paintings.Add(painting);
 
-            // Update employees collection
             history.employees.Clear();
             foreach (Employee emp in checkedListBox2.CheckedItems)
                 history.employees.Add(emp);
@@ -146,6 +155,11 @@ namespace GalleryApp.RedactForms
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
+        }
+
+        private void RedactHistory_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

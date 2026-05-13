@@ -44,28 +44,45 @@ namespace GalleryApp.RedactForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            if (numericUpDown2.Value > 0 && numericUpDown1.Value > numericUpDown2.Value)
             {
-                MessageBox.Show("Введите ФИО автора!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Год смерти не может быть раньше года рождения!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var author = db.Authors.Find(authorId);
-            if (author == null)
+            try
             {
-                MessageBox.Show("Автор не найден!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (string.IsNullOrWhiteSpace(textBox1.Text))
+                {
+                    MessageBox.Show("Введите ФИО автора!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var author = db.Authors.Find(authorId);
+                if (author == null)
+                {
+                    MessageBox.Show("Автор не найден!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                author.full_name = textBox1.Text.Trim();
+                author.Year_of_birth = (int)numericUpDown1.Value;
+                author.Year_of_death = (int)numericUpDown2.Value;
+                author.date_of_birth = new DateTime((int)numericUpDown1.Value, 1, 1);
+
+                db.SaveChanges();
+                MessageBox.Show("Данные сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-
-            author.full_name = textBox1.Text.Trim();
-            author.Year_of_birth = (int)numericUpDown1.Value;
-            author.Year_of_death = (int)numericUpDown2.Value;
-            author.date_of_birth = new DateTime((int)numericUpDown1.Value, 1, 1);
-
-            db.SaveChanges();
-            MessageBox.Show("Данные сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

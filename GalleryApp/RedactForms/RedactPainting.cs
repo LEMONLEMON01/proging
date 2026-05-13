@@ -20,15 +20,26 @@ namespace GalleryApp.RedactForms
         public RedactPainting(int id)
         {
             InitializeComponent();
-            db = new Context();
-            paintingId = id;
-            comboBox1.Items.AddRange(Enum.GetNames(typeof(StatusP)));
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            numericUpDown2.Maximum = 2100;
-            LoadGenres();
-            LoadLocations();
-            LoadAuthors();
-            LoadPaintingData();
+
+            try
+            {
+                db = new Context();
+                paintingId = id;
+                comboBox1.Items.AddRange(Enum.GetNames(typeof(StatusP)));
+                comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+                numericUpDown2.Maximum = 2100;
+                LoadGenres();
+                LoadLocations();
+                LoadAuthors();
+                LoadPaintingData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
         }
 
         private void LoadGenres()

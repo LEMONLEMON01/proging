@@ -22,14 +22,20 @@ namespace GalleryApp.AddForms
                 LoadLocations();
                 LoadAuthors();
             }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
 
-            numericUpDown2.Maximum = 2100;
+            numericUpDown2.Maximum = DateTime.Now.Year;
         }
 
         private void LoadGenres()
@@ -61,16 +67,39 @@ namespace GalleryApp.AddForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBox1.Text) ||
-                numericUpDown1.Value <= 0 ||
-                numericUpDown2.Value <= 0 ||
-                comboBox1.SelectedItem == null ||
-                comboBox2.SelectedItem == null ||
-                comboBox3.SelectedItem == null ||
-                checkedListBox1.CheckedItems.Count == 0)
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                MessageBox.Show("Заполните все поля и выберите хотя бы одного автора!", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Введите название картины!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (numericUpDown1.Value <= 0)
+            {
+                MessageBox.Show("Стоимость должна быть больше нуля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (numericUpDown2.Value <= 0 || numericUpDown2.Value > DateTime.Now.Year)
+            {
+                MessageBox.Show($"Год создания должен быть от 1 до {DateTime.Now.Year}!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите статус картины!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите жанр!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (comboBox3.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите текущее местоположение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (checkedListBox1.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите хотя бы одного автора!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -97,9 +126,13 @@ namespace GalleryApp.AddForms
                 db.SaveChanges();
                 this.Close();
             }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

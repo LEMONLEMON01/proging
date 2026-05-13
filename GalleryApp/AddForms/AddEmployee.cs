@@ -19,9 +19,15 @@ namespace GalleryApp.AddForms
             {
                 LoadPositions();
             }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -49,13 +55,54 @@ namespace GalleryApp.AddForms
                 }
             }
 
-            if (string.IsNullOrWhiteSpace(textBox1.Text) ||
-                string.IsNullOrWhiteSpace(textBox2.Text) ||
-                string.IsNullOrWhiteSpace(textBox3.Text) ||
-                comboBox1.SelectedItem == null ||
-                !hasAccessSelected)
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Введите ФИО сотрудника!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBox2.Text))
+            {
+                MessageBox.Show("Введите логин!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBox3.Text))
+            {
+                MessageBox.Show("Введите пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите должность!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!hasAccessSelected)
+            {
+                MessageBox.Show("Выберите хотя бы одно право доступа!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (dateTimePicker1.Value > DateTime.Now)
+            {
+                MessageBox.Show("Дата рождения не может быть в будущем!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                bool loginExists = db.Employees.Any(e => e.login == textBox2.Text.Trim());
+                if (loginExists)
+                {
+                    MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -83,9 +130,13 @@ namespace GalleryApp.AddForms
                 db.SaveChanges();
                 this.Close();
             }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

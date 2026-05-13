@@ -19,9 +19,15 @@ namespace GalleryApp.AddForms
                 LoadPaintings();
                 LoadEmployees();
             }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -63,13 +69,24 @@ namespace GalleryApp.AddForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == null ||
-                comboBox2.SelectedItem == null ||
-                checkedListBox1.CheckedItems.Count == 0 ||
-                checkedListBox2.CheckedItems.Count == 0)
+            if (comboBox1.SelectedItem == null)
             {
-                MessageBox.Show("Выберите локации, хотя бы одну картину и хотя бы одного сотрудника!",
-                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Выберите локацию 'откуда'!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите локацию 'куда'!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (checkedListBox1.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите хотя бы одну картину!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (checkedListBox2.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите хотя бы одного сотрудника!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -92,9 +109,13 @@ namespace GalleryApp.AddForms
                 db.SaveChanges();
                 this.Close();
             }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

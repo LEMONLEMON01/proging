@@ -835,7 +835,6 @@ namespace GalleryApp
             }
         }
 
-
         private void buttonClearSearch_Click(object sender, EventArgs e)
         {
             textBoxSearch.Text = "";

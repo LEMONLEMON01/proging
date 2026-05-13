@@ -21,8 +21,21 @@ namespace GalleryApp.RedactForms
         {
             InitializeComponent();
             genreID = _id;
-            db = new Context();
-            GetData(db);
+            try
+            {
+                db = new Context();
+                GetData(db);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+
+
         }
         private void GetData(Context db)
         {
@@ -92,6 +105,11 @@ namespace GalleryApp.RedactForms
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RedactGenre_Load(object sender, EventArgs e)
         {
 
         }

@@ -82,6 +82,7 @@
             this.Controls.Add(this.button1);
             this.Name = "RedactGenre";
             this.Text = "RedactGenre";
+            this.Load += new System.EventHandler(this.RedactGenre_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

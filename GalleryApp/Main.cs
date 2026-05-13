@@ -25,7 +25,7 @@ namespace GalleryApp
 
         ListWindow listWindow;
 
-        
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -100,7 +100,7 @@ namespace GalleryApp
 
         private void Main_Load(object sender, EventArgs e)
         {
- 
+
         }
 
         private void просмотретьОтчетыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,7 +109,6 @@ namespace GalleryApp
             {
                 DataTable restorationPaint = GetPaintingsOnRestoration();
                 createRestorationReport(restorationPaint);
-
             }
             catch (Exception ex) {
                 MessageBox.Show($"Ошибка при создании отчета: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -118,13 +117,14 @@ namespace GalleryApp
 
         private void createRestorationReport(DataTable restorationPaint)
         {
-            using (SaveFileDialog saveDialog = new SaveFileDialog()) {
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
                 saveDialog.Filter = "Excel файлы|*.xlsx";
                 saveDialog.FileName = $"Отчет_о_реставрациях_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
 
-                if(saveDialog.ShowDialog() == DialogResult.OK)
+                if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    using(var p = new OfficeOpenXml.ExcelPackage())
+                    using (var p = new OfficeOpenXml.ExcelPackage())
                     {
                         var sheet = p.Workbook.Worksheets.Add("Отчет о реставрациях");
                         sheet.Cells[1, 1].Value = "Отчет о реставрациях";
@@ -142,7 +142,8 @@ namespace GalleryApp
 
                         int row = 5;
 
-                        for (int col = 1; col < restorationPaint.Columns.Count; col++) {
+                        for (int col = 1; col < restorationPaint.Columns.Count; col++)
+                        {
                             sheet.Cells[row, col + 1].Value = restorationPaint.Columns[col].ColumnName;
                         }
 
@@ -169,18 +170,25 @@ namespace GalleryApp
             table.Columns.Add("Id", typeof(int));
             table.Columns.Add("Name", typeof(string));
 
-            using (var context = new Context()) {
-                var paintings = context.Paintings.Where(p => p.StatusP == StatusP.restoration).ToList();
-
-                foreach (var painting in paintings)
+            try
+            {
+                using (var context = new Context())
                 {
-                    table.Rows.Add(
-                        painting.Id,
-                        painting.Title
-                    );
+                    var paintings = context.Paintings.Where(p => p.StatusP == StatusP.restoration).ToList();
+
+                    foreach (var painting in paintings)
+                    {
+                        table.Rows.Add(
+                            painting.Id,
+                            painting.Title
+                        );
+                    }
                 }
             }
-
+            catch (Exception)
+            {
+                throw; // пробрасываем для обработки в вызывающем методе
+            }
 
             return table;
         }
@@ -192,7 +200,7 @@ namespace GalleryApp
                 DataTable exhibitionPaintings = GetPaintingsOnExhibition();
                 createExhibitionReport(exhibitionPaintings);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show($"Ошибка при создании отчета: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -206,25 +214,32 @@ namespace GalleryApp
             table.Columns.Add("Название картины", typeof(string));
             table.Columns.Add("Место проведения выставки", typeof(string));
 
-            using (var context = new Context())
+            try
             {
-                var paintingsOnExhibition = from p in context.Paintings
-                                            where p.StatusP == StatusP.exhibition
-                                            select new
-                                            {
-                                                p.Id,
-                                                p.Title,
-                                                LocationName = p.Location.Name
-                                            };
-
-                foreach (var painting in paintingsOnExhibition)
+                using (var context = new Context())
                 {
-                    table.Rows.Add(
-                        painting.Id,
-                        painting.Title,
-                        painting.LocationName
-                    );
+                    var paintingsOnExhibition = from p in context.Paintings
+                                                where p.StatusP == StatusP.exhibition
+                                                select new
+                                                {
+                                                    p.Id,
+                                                    p.Title,
+                                                    LocationName = p.Location.Name
+                                                };
+
+                    foreach (var painting in paintingsOnExhibition)
+                    {
+                        table.Rows.Add(
+                            painting.Id,
+                            painting.Title,
+                            painting.LocationName
+                        );
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                throw;
             }
 
             return table;

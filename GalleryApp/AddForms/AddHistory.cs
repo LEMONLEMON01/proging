@@ -1,13 +1,7 @@
-﻿using GalleryApp.Classes;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using GalleryApp.Classes;
 
 namespace GalleryApp.AddForms
 {
@@ -19,9 +13,18 @@ namespace GalleryApp.AddForms
             InitializeComponent();
             db = new Context();
 
-            LoadLocations();
-            LoadPaintings();
-            LoadEmployees();
+            try
+            {
+                LoadLocations();
+                LoadPaintings();
+                LoadEmployees();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
 
             dateTimePicker1.Value = DateTime.Now;
         }
@@ -58,11 +61,6 @@ namespace GalleryApp.AddForms
             comboBox2.SelectedIndex = -1;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem == null ||
@@ -75,27 +73,32 @@ namespace GalleryApp.AddForms
                 return;
             }
 
-            Move_history history = new Move_history
+            try
             {
-                date = dateTimePicker1.Value,
-                location_from = (Location)comboBox1.SelectedItem,
-                location_to = (Location)comboBox2.SelectedItem
-            };
+                Move_history history = new Move_history
+                {
+                    date = dateTimePicker1.Value,
+                    location_from = (Location)comboBox1.SelectedItem,
+                    location_to = (Location)comboBox2.SelectedItem
+                };
 
-            foreach (Painting painting in checkedListBox1.CheckedItems)
-                history.paintings.Add(painting);
+                foreach (Painting painting in checkedListBox1.CheckedItems)
+                    history.paintings.Add(painting);
 
-            foreach (Employee employee in checkedListBox2.CheckedItems)
-                history.employees.Add(employee);
+                foreach (Employee employee in checkedListBox2.CheckedItems)
+                    history.employees.Add(employee);
 
-            db.Move_Histories.Add(history);
-            db.SaveChanges();
-            this.Close();
+                db.Move_Histories.Add(history);
+                db.SaveChanges();
+                this.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void button2_Click(object sender, EventArgs e) => this.Close();
+        private void label1_Click(object sender, EventArgs e) { }
     }
 }

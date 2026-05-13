@@ -187,7 +187,7 @@ namespace GalleryApp
             }
             catch (Exception)
             {
-                throw; // пробрасываем для обработки в вызывающем методе
+                throw;
             }
 
             return table;
@@ -200,7 +200,7 @@ namespace GalleryApp
                 DataTable exhibitionPaintings = GetPaintingsOnExhibition();
                 createExhibitionReport(exhibitionPaintings);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при создании отчета: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

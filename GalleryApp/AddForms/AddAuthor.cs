@@ -25,6 +25,12 @@ namespace GalleryApp.AddForms
 
             try
             {
+                if (numericUpDown2.Value > 0 && numericUpDown1.Value > numericUpDown2.Value)
+                {
+                    MessageBox.Show("Год смерти не может быть раньше года рождения","Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 Author author = new Author
                 {
                     full_name = textBox1.Text.Trim(),
@@ -37,13 +43,22 @@ namespace GalleryApp.AddForms
                 db.SaveChanges();
                 this.Close();
             }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}","Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void button2_Click(object sender, EventArgs e) => this.Close();
         private void label4_Click(object sender, EventArgs e) { }
+
+        private void AddAuthor_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -856,6 +856,7 @@ namespace GalleryApp
             else
             {
                 int selected_id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
+                DialogResult result = DialogResult.None;
                 switch (type)
                 {
                     case "Картины":
@@ -875,7 +876,7 @@ namespace GalleryApp
                         break;
                     case "История":
                         redactHistory = new RedactHistory(selected_id);
-                        redactHistory.ShowDialog();
+                        result = redactHistory.ShowDialog();
                         LoadHistory(searchText, filterText);
                         break;
                     case "Выставки":

@@ -28,6 +28,10 @@ namespace GalleryApp.RedactForms
                 LoadPaintings();
                 LoadEmployees();
                 LoadHistoryData();
+
+                comboBoxStatus.Items.AddRange(Enum.GetNames(typeof(StatusP)));
+                comboBoxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+                comboBoxStatus.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -35,6 +39,7 @@ namespace GalleryApp.RedactForms
                 this.Close();
             }
         }
+
         private void RedactHistory_Load(object sender, EventArgs e)
         {
         }
@@ -126,6 +131,13 @@ namespace GalleryApp.RedactForms
                 return;
             }
 
+            if (comboBoxStatus.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите новый статус для картин!",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var history = db.Move_Histories
                 .Include(m => m.paintings)
                 .Include(m => m.employees)
@@ -137,26 +149,38 @@ namespace GalleryApp.RedactForms
                 return;
             }
 
+            StatusP newStatus = (StatusP)Enum.Parse(typeof(StatusP), comboBoxStatus.SelectedItem.ToString());
+            Location targetLocation = (Location)comboBox2.SelectedItem;
+
             history.date = dateTimePicker1.Value;
             history.location_from = (Location)comboBox1.SelectedItem;
-            history.location_to = (Location)comboBox2.SelectedItem;
-            Location targetLocation = (Location)comboBox2.SelectedItem;
+            history.location_to = targetLocation;
 
             history.paintings.Clear();
             foreach (Painting painting in checkedListBox1.CheckedItems)
             {
                 history.paintings.Add(painting);
+
+                // Обновляем локацию и статус у картины
                 painting.Location = targetLocation;
+                painting.StatusP = newStatus;
             }
 
             history.employees.Clear();
             foreach (Employee emp in checkedListBox2.CheckedItems)
                 history.employees.Add(emp);
 
-            db.SaveChanges();
-            MessageBox.Show("Данные сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            try
+            {
+                db.SaveChanges();
+                MessageBox.Show("Данные сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

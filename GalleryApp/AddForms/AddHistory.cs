@@ -33,6 +33,9 @@ namespace GalleryApp.AddForms
             }
 
             dateTimePicker1.Value = DateTime.Now;
+            comboBoxStatus.Items.AddRange(Enum.GetNames(typeof(StatusP)));
+            comboBoxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxStatus.SelectedIndex = -1;
         }
 
         private void LoadEmployees()
@@ -89,52 +92,55 @@ namespace GalleryApp.AddForms
                 MessageBox.Show("Выберите хотя бы одного сотрудника!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (comboBoxStatus.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите новый статус для картин!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             try
             {
                 Location targetLocation = (Location)comboBox2.SelectedItem;
+                StatusP newStatus = (StatusP)Enum.Parse(typeof(StatusP), comboBoxStatus.SelectedItem.ToString());
 
                 Move_history history = new Move_history
                 {
                     date = dateTimePicker1.Value,
                     location_from = (Location)comboBox1.SelectedItem,
-                    location_to = (Location)comboBox2.SelectedItem
+                    location_to = targetLocation
                 };
 
                 foreach (Painting painting in checkedListBox1.CheckedItems)
                 {
                     history.paintings.Add(painting);
+
                     var paintingInDb = db.Paintings.Find(painting.Id);
                     if (paintingInDb != null)
                     {
                         paintingInDb.Location = targetLocation;
+                        paintingInDb.StatusP = newStatus;
                     }
                 }
-                    
 
                 foreach (Employee employee in checkedListBox2.CheckedItems)
                     history.employees.Add(employee);
 
                 db.Move_Histories.Add(history);
                 db.SaveChanges();
+
+                MessageBox.Show("Запись успешно добавлена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
                 MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e) => this.Close();
-        private void label1_Click(object sender, EventArgs e) { }
-
-        private void AddHistory_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

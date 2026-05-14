@@ -81,6 +81,7 @@
             this.Controls.Add(this.button1);
             this.Name = "RedactPosition";
             this.Text = "RedactPosition";
+            this.Load += new System.EventHandler(this.RedactPosition_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

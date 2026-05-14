@@ -28,6 +28,10 @@ namespace GalleryApp.RedactForms
                 LoadPaintings();
                 LoadEmployees();
                 LoadHistoryData();
+
+                comboBoxStatus.Items.AddRange(Enum.GetNames(typeof(StatusP)));
+                comboBoxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+                comboBoxStatus.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -75,10 +79,9 @@ namespace GalleryApp.RedactForms
 
         private void LoadHistoryData()
         {
-            // Используем правильные имена свойств: paintings и employees (с маленькой буквы)
             var history = db.Move_Histories
-                .Include(m => m.paintings)    // ← маленькая p
-                .Include(m => m.employees)    // ← маленькая e
+                .Include(m => m.paintings)
+                .Include(m => m.employees)
                 .Include(m => m.location_from)
                 .Include(m => m.location_to)
                 .FirstOrDefault(h => h.Id == historyId);
@@ -92,7 +95,6 @@ namespace GalleryApp.RedactForms
 
             dateTimePicker1.Value = history.date;
 
-            // Устанавливаем локации
             if (history.location_from != null)
                 comboBox1.SelectedItem = comboBox1.Items.Cast<Location>()
                     .FirstOrDefault(l => l.Id == history.location_from.Id);
@@ -101,21 +103,21 @@ namespace GalleryApp.RedactForms
                 comboBox2.SelectedItem = comboBox2.Items.Cast<Location>()
                     .FirstOrDefault(l => l.Id == history.location_to.Id);
 
-            // Отмечаем картины (используем paintings - с маленькой)
             for (int i = 0; i < checkedListBox1.Items.Count; i++)
             {
                 var painting = checkedListBox1.Items[i] as Painting;
                 if (painting != null && history.paintings.Any(p => p.Id == painting.Id))
                     checkedListBox1.SetItemChecked(i, true);
             }
-
-            // Отмечаем сотрудников (используем employees - с маленькой)
+            
             for (int i = 0; i < checkedListBox2.Items.Count; i++)
             {
                 var emp = checkedListBox2.Items[i] as Employee;
                 if (emp != null && history.employees.Any(e => e.Id == emp.Id))
                     checkedListBox2.SetItemChecked(i, true);
             }
+
+            // No pre-selection of status – let the user choose
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -126,6 +128,13 @@ namespace GalleryApp.RedactForms
                 checkedListBox2.CheckedItems.Count == 0)
             {
                 MessageBox.Show("Выберите локации, хотя бы одну картину и хотя бы одного сотрудника!",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (comboBoxStatus.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите новый статус для картин!",
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -141,14 +150,19 @@ namespace GalleryApp.RedactForms
                 return;
             }
 
+            StatusP newStatus = (StatusP)Enum.Parse(typeof(StatusP), comboBoxStatus.SelectedItem.ToString());
+
             history.date = dateTimePicker1.Value;
             history.location_from = (Location)comboBox1.SelectedItem;
             history.location_to = (Location)comboBox2.SelectedItem;
 
-            // Используем правильные имена: paintings и employees (с маленькой)
             history.paintings.Clear();
             foreach (Painting painting in checkedListBox1.CheckedItems)
+            {
                 history.paintings.Add(painting);
+                painting.StatusP = newStatus;
+                painting.Location = (Location)comboBox2.SelectedItem;
+            }
 
             history.employees.Clear();
             foreach (Employee emp in checkedListBox2.CheckedItems)

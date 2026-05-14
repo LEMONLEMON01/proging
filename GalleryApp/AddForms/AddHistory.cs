@@ -33,6 +33,9 @@ namespace GalleryApp.AddForms
             }
 
             dateTimePicker1.Value = DateTime.Now;
+            comboBoxStatus.Items.AddRange(Enum.GetNames(typeof(StatusP)));
+            comboBoxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxStatus.SelectedIndex = -1;
         }
 
         private void LoadEmployees()
@@ -89,9 +92,16 @@ namespace GalleryApp.AddForms
                 MessageBox.Show("Выберите хотя бы одного сотрудника!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (comboBoxStatus.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите новый статус для картин!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             try
             {
+                StatusP newStatus = (StatusP)Enum.Parse(typeof(StatusP), comboBoxStatus.SelectedItem.ToString());
+
                 Move_history history = new Move_history
                 {
                     date = dateTimePicker1.Value,
@@ -100,7 +110,12 @@ namespace GalleryApp.AddForms
                 };
 
                 foreach (Painting painting in checkedListBox1.CheckedItems)
+                {
                     history.paintings.Add(painting);
+
+                    painting.StatusP = newStatus;
+                    painting.Location = (Location)comboBox2.SelectedItem;
+                }
 
                 foreach (Employee employee in checkedListBox2.CheckedItems)
                     history.employees.Add(employee);

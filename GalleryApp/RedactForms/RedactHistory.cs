@@ -74,8 +74,8 @@ namespace GalleryApp.RedactForms
         private void LoadHistoryData()
         {
             var history = db.Move_Histories
-                .Include("paintings")
-                .Include("employees")
+                .Include("Paintings")
+                .Include("Employees")
                 .FirstOrDefault(h => h.Id == historyId);
 
             if (history == null)
@@ -118,8 +118,8 @@ namespace GalleryApp.RedactForms
             }
 
             var history = db.Move_Histories
-                .Include("paintings")
-                .Include("employees")
+                .Include("Paintings")
+                .Include("Employees")
                 .FirstOrDefault(h => h.Id == historyId);
 
             if (history == null)

@@ -40,7 +40,6 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.label5 = new System.Windows.Forms.Label();
-            // New controls for status
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -80,7 +79,6 @@
             this.label1.Size = new System.Drawing.Size(42, 16);
             this.label1.TabIndex = 19;
             this.label1.Text = "Дата:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // comboBox1
             // 
@@ -164,7 +162,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(29, 368);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(105, 16);
+            this.label6.Size = new System.Drawing.Size(100, 16);
             this.label6.TabIndex = 30;
             this.label6.Text = "Новый статус:";
             // 
@@ -189,7 +187,6 @@
             this.Controls.Add(this.button1);
             this.Name = "AddHistory";
             this.Text = "AddHistory";
-            this.Load += new System.EventHandler(this.AddHistory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

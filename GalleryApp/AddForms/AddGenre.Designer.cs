@@ -83,6 +83,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "AddGenre";
             this.Text = "AddGenre";
+            this.Load += new System.EventHandler(this.AddGenre_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

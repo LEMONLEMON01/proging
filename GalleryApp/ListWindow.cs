@@ -875,7 +875,7 @@ namespace GalleryApp
                         LoadPositions(searchText, filterText);
                         break;
                     case "История":
-                        redactHistory = new RedactHistory(selected_id);
+                        redactHistory = new RedactHistory(selected_id, db);
                         result = redactHistory.ShowDialog();
                         LoadHistory(searchText, filterText);
                         break;

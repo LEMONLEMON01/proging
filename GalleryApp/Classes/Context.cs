@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GalleryApp.Classes
 {
-    internal class Context : DbContext
+    public class Context : DbContext
     {
         public Context() : base("database_gallery")
         {

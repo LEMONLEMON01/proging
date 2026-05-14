@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GalleryApp.Classes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Data.Entity;
 
 namespace GalleryApp.RedactForms
 {
@@ -17,26 +17,26 @@ namespace GalleryApp.RedactForms
         private Context db;
         private int historyId;
 
-        public RedactHistory(int id)
+        public RedactHistory(int id, Context existingContext)
         {
             InitializeComponent();
             try
             {
-                db = new Context();
+                db = existingContext;
                 historyId = id;
                 LoadLocations();
                 LoadPaintings();
                 LoadEmployees();
                 LoadHistoryData();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка подключения к базе данных", "Ошибка",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
-                return;
             }
-
-
+        }
+        private void RedactHistory_Load(object sender, EventArgs e)
+        {
         }
 
         private void LoadLocations()
@@ -55,6 +55,7 @@ namespace GalleryApp.RedactForms
 
         private void LoadPaintings()
         {
+            checkedListBox1.Items.Clear();
             var paintings = db.Paintings.OrderBy(p => p.Title).ToList();
             checkedListBox1.DisplayMember = "Title";
             checkedListBox1.ValueMember = "Id";
@@ -64,6 +65,7 @@ namespace GalleryApp.RedactForms
 
         private void LoadEmployees()
         {
+            checkedListBox2.Items.Clear();
             var employees = db.Employees.OrderBy(e => e.full_name).ToList();
             checkedListBox2.DisplayMember = "full_name";
             checkedListBox2.ValueMember = "Id";
@@ -73,9 +75,12 @@ namespace GalleryApp.RedactForms
 
         private void LoadHistoryData()
         {
+            // Используем правильные имена свойств: paintings и employees (с маленькой буквы)
             var history = db.Move_Histories
-                .Include("Paintings")
-                .Include("Employees")
+                .Include(m => m.paintings)    // ← маленькая p
+                .Include(m => m.employees)    // ← маленькая e
+                .Include(m => m.location_from)
+                .Include(m => m.location_to)
                 .FirstOrDefault(h => h.Id == historyId);
 
             if (history == null)
@@ -87,21 +92,29 @@ namespace GalleryApp.RedactForms
 
             dateTimePicker1.Value = history.date;
 
+            // Устанавливаем локации
             if (history.location_from != null)
-                comboBox1.SelectedItem = history.location_from;
-            if (history.location_to != null)
-                comboBox2.SelectedItem = history.location_to;
+                comboBox1.SelectedItem = comboBox1.Items.Cast<Location>()
+                    .FirstOrDefault(l => l.Id == history.location_from.Id);
 
-            foreach (Painting painting in checkedListBox1.Items)
+            if (history.location_to != null)
+                comboBox2.SelectedItem = comboBox2.Items.Cast<Location>()
+                    .FirstOrDefault(l => l.Id == history.location_to.Id);
+
+            // Отмечаем картины (используем paintings - с маленькой)
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
             {
-                if (history.paintings.Contains(painting))
-                    checkedListBox1.SetItemChecked(checkedListBox1.Items.IndexOf(painting), true);
+                var painting = checkedListBox1.Items[i] as Painting;
+                if (painting != null && history.paintings.Any(p => p.Id == painting.Id))
+                    checkedListBox1.SetItemChecked(i, true);
             }
 
-            foreach (Employee emp in checkedListBox2.Items)
+            // Отмечаем сотрудников (используем employees - с маленькой)
+            for (int i = 0; i < checkedListBox2.Items.Count; i++)
             {
-                if (history.employees.Contains(emp))
-                    checkedListBox2.SetItemChecked(checkedListBox2.Items.IndexOf(emp), true);
+                var emp = checkedListBox2.Items[i] as Employee;
+                if (emp != null && history.employees.Any(e => e.Id == emp.Id))
+                    checkedListBox2.SetItemChecked(i, true);
             }
         }
 
@@ -118,8 +131,8 @@ namespace GalleryApp.RedactForms
             }
 
             var history = db.Move_Histories
-                .Include("Paintings")
-                .Include("Employees")
+                .Include(m => m.paintings)
+                .Include(m => m.employees)
                 .FirstOrDefault(h => h.Id == historyId);
 
             if (history == null)
@@ -132,6 +145,7 @@ namespace GalleryApp.RedactForms
             history.location_from = (Location)comboBox1.SelectedItem;
             history.location_to = (Location)comboBox2.SelectedItem;
 
+            // Используем правильные имена: paintings и employees (с маленькой)
             history.paintings.Clear();
             foreach (Painting painting in checkedListBox1.CheckedItems)
                 history.paintings.Add(painting);
@@ -155,11 +169,6 @@ namespace GalleryApp.RedactForms
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
-        }
-
-        private void RedactHistory_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

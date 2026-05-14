@@ -1,12 +1,6 @@
 ﻿using GalleryApp.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GalleryApp
@@ -17,12 +11,28 @@ namespace GalleryApp
         public Authorization()
         {
             InitializeComponent();
-            context = new Context();
+            try
+            {
+                context = new Context();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
             SetupLoginField();
             SetupPasswordField();
             this.AcceptButton = btnAuth;
-
         }
+
         private void SetupLoginField()
         {
             txtbxName.Text = "Логин";
@@ -87,24 +97,35 @@ namespace GalleryApp
                 return;
             }
 
-            Employee employee = context.Employees.FirstOrDefault(emp => emp.login == login && emp.password == password);
-
-            if (employee != null)
+            try
             {
-                AppSession.CurrentEmployee = employee;
+                Employee employee = context.Employees.FirstOrDefault(emp => emp.login == login && emp.password == password);
 
-                Hide();
-                Main main = new Main();
-                main.ShowDialog();
-                Close();
+                if (employee != null)
+                {
+                    AppSession.CurrentEmployee = employee;
+
+                    Hide();
+                    Main main = new Main();
+                    main.ShowDialog();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Неверные логин или пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    txtbxName.Text = "Логин";
+                    txtbxPassword.Text = "Пароль";
+                    txtbxPassword.PasswordChar = '\0';
+                }
             }
-            else
+            catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show("Неверные логин или пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                txtbxName.Text = "Логин";
-                txtbxPassword.Text = "Пароль";
-                txtbxPassword.PasswordChar = '\0';
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

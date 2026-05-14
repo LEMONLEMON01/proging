@@ -30,12 +30,15 @@
                         Year = c.Int(nullable: false),
                         StatusP = c.Int(nullable: false),
                         Location_Id = c.Int(),
+                        Location_Id1 = c.Int(),
                         Move_history_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Locations", t => t.Location_Id)
+                .ForeignKey("dbo.Locations", t => t.Location_Id1)
                 .ForeignKey("dbo.Move_histories", t => t.Move_history_Id)
                 .Index(t => t.Location_Id)
+                .Index(t => t.Location_Id1)
                 .Index(t => t.Move_history_Id);
             
             CreateTable(
@@ -154,16 +157,20 @@
                 c => new
                     {
                         Id = c.Int(nullable: false),
+                        Painting_Id = c.Int(),
                         Name = c.String(maxLength: 250),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Exhibitions", t => t.Id)
-                .Index(t => t.Id);
+                .ForeignKey("dbo.Painting", t => t.Painting_Id)
+                .Index(t => t.Id)
+                .Index(t => t.Painting_Id);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Locations", "Painting_Id", "dbo.Painting");
             DropForeignKey("dbo.Locations", "Id", "dbo.Exhibitions");
             DropForeignKey("dbo.Employees", "Position_Id", "dbo.Positions");
             DropForeignKey("dbo.Employees", "Id", "dbo.People");
@@ -174,11 +181,13 @@
             DropForeignKey("dbo.Move_histories", "location_from_Id", "dbo.Locations");
             DropForeignKey("dbo.Move_historyEmployee", "Employee_Id", "dbo.Employees");
             DropForeignKey("dbo.Move_historyEmployee", "Move_history_Id", "dbo.Move_histories");
+            DropForeignKey("dbo.Painting", "Location_Id1", "dbo.Locations");
             DropForeignKey("dbo.Painting", "Location_Id", "dbo.Locations");
             DropForeignKey("dbo.GenrePaintings", "Painting_Id", "dbo.Painting");
             DropForeignKey("dbo.GenrePaintings", "Genre_Id", "dbo.Genres");
             DropForeignKey("dbo.PaintingAuthors", "Author_Id", "dbo.Authors");
             DropForeignKey("dbo.PaintingAuthors", "Painting_Id", "dbo.Painting");
+            DropIndex("dbo.Locations", new[] { "Painting_Id" });
             DropIndex("dbo.Locations", new[] { "Id" });
             DropIndex("dbo.Employees", new[] { "Position_Id" });
             DropIndex("dbo.Employees", new[] { "Id" });
@@ -192,6 +201,7 @@
             DropIndex("dbo.Move_histories", new[] { "location_to_Id" });
             DropIndex("dbo.Move_histories", new[] { "location_from_Id" });
             DropIndex("dbo.Painting", new[] { "Move_history_Id" });
+            DropIndex("dbo.Painting", new[] { "Location_Id1" });
             DropIndex("dbo.Painting", new[] { "Location_Id" });
             DropIndex("dbo.People", new[] { "Author_Id" });
             DropTable("dbo.Locations");

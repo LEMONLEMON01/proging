@@ -23,6 +23,7 @@ namespace GalleryApp.Classes
         public Location Location { get; set; }
         public virtual List<Genre> Genres { get; set; } = new List<Genre>();
         public virtual List<Author> Authors { get; set; } = new List<Author>();
+        public virtual List<Location> Locations { get; set; } = new List<Location>();
 
     }
 }

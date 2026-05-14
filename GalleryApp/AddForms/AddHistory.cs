@@ -92,6 +92,8 @@ namespace GalleryApp.AddForms
 
             try
             {
+                Location targetLocation = (Location)comboBox2.SelectedItem;
+
                 Move_history history = new Move_history
                 {
                     date = dateTimePicker1.Value,
@@ -100,7 +102,15 @@ namespace GalleryApp.AddForms
                 };
 
                 foreach (Painting painting in checkedListBox1.CheckedItems)
+                {
                     history.paintings.Add(painting);
+                    var paintingInDb = db.Paintings.Find(painting.Id);
+                    if (paintingInDb != null)
+                    {
+                        paintingInDb.Location = targetLocation;
+                    }
+                }
+                    
 
                 foreach (Employee employee in checkedListBox2.CheckedItems)
                     history.employees.Add(employee);
@@ -121,5 +131,10 @@ namespace GalleryApp.AddForms
 
         private void button2_Click(object sender, EventArgs e) => this.Close();
         private void label1_Click(object sender, EventArgs e) { }
+
+        private void AddHistory_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

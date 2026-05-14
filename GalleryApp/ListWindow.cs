@@ -647,9 +647,19 @@ namespace GalleryApp
                     break;
 
                 case "История":
-                    var history = context.Move_Histories.Find(id);
+                    var history = context.Move_Histories
+                        .Include(m => m.employees)
+                        .Include(m => m.paintings)
+                        .FirstOrDefault(m => m.Id == id);
                     if (history != null)
+                    {
+                        if (history.employees != null)
+                            history.employees.Clear();
+                        if (history.paintings != null)
+                            history.paintings.Clear();
+
                         context.Move_Histories.Remove(history);
+                    }
                     break;
 
                 case "Выставки":
@@ -875,7 +885,7 @@ namespace GalleryApp
                         LoadPositions(searchText, filterText);
                         break;
                     case "История":
-                        redactHistory = new RedactHistory(selected_id, db);
+                        redactHistory = new RedactHistory(selected_id);
                         result = redactHistory.ShowDialog();
                         LoadHistory(searchText, filterText);
                         break;

@@ -17,12 +17,12 @@ namespace GalleryApp.RedactForms
         private Context db;
         private int historyId;
 
-        public RedactHistory(int id, Context existingContext)
+        public RedactHistory(int id)
         {
             InitializeComponent();
             try
             {
-                db = existingContext;
+                db = new Context();
                 historyId = id;
                 LoadLocations();
                 LoadPaintings();
@@ -75,10 +75,9 @@ namespace GalleryApp.RedactForms
 
         private void LoadHistoryData()
         {
-            // Используем правильные имена свойств: paintings и employees (с маленькой буквы)
             var history = db.Move_Histories
-                .Include(m => m.paintings)    // ← маленькая p
-                .Include(m => m.employees)    // ← маленькая e
+                .Include(m => m.paintings)
+                .Include(m => m.employees)
                 .Include(m => m.location_from)
                 .Include(m => m.location_to)
                 .FirstOrDefault(h => h.Id == historyId);
@@ -92,7 +91,6 @@ namespace GalleryApp.RedactForms
 
             dateTimePicker1.Value = history.date;
 
-            // Устанавливаем локации
             if (history.location_from != null)
                 comboBox1.SelectedItem = comboBox1.Items.Cast<Location>()
                     .FirstOrDefault(l => l.Id == history.location_from.Id);
@@ -101,7 +99,6 @@ namespace GalleryApp.RedactForms
                 comboBox2.SelectedItem = comboBox2.Items.Cast<Location>()
                     .FirstOrDefault(l => l.Id == history.location_to.Id);
 
-            // Отмечаем картины (используем paintings - с маленькой)
             for (int i = 0; i < checkedListBox1.Items.Count; i++)
             {
                 var painting = checkedListBox1.Items[i] as Painting;
@@ -109,7 +106,6 @@ namespace GalleryApp.RedactForms
                     checkedListBox1.SetItemChecked(i, true);
             }
 
-            // Отмечаем сотрудников (используем employees - с маленькой)
             for (int i = 0; i < checkedListBox2.Items.Count; i++)
             {
                 var emp = checkedListBox2.Items[i] as Employee;
@@ -144,11 +140,14 @@ namespace GalleryApp.RedactForms
             history.date = dateTimePicker1.Value;
             history.location_from = (Location)comboBox1.SelectedItem;
             history.location_to = (Location)comboBox2.SelectedItem;
+            Location targetLocation = (Location)comboBox2.SelectedItem;
 
-            // Используем правильные имена: paintings и employees (с маленькой)
             history.paintings.Clear();
             foreach (Painting painting in checkedListBox1.CheckedItems)
+            {
                 history.paintings.Add(painting);
+                painting.Location = targetLocation;
+            }
 
             history.employees.Clear();
             foreach (Employee emp in checkedListBox2.CheckedItems)

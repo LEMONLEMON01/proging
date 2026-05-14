@@ -166,6 +166,7 @@
             this.Controls.Add(this.button1);
             this.Name = "AddHistory";
             this.Text = "AddHistory";
+            this.Load += new System.EventHandler(this.AddHistory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -75,11 +75,6 @@ namespace GalleryApp.AddForms
                 MessageBox.Show("Выберите должность!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!hasAccessSelected)
-            {
-                MessageBox.Show("Выберите хотя бы одно право доступа!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
             if (dateTimePicker1.Value > DateTime.Now)
             {
                 MessageBox.Show("Дата рождения не может быть в будущем!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
